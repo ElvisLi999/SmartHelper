@@ -1,0 +1,52 @@
+<!-- Main Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <!-- LOGO setting -->
+      <img class="navbar-brand" src="/Assets/images/logo.png" href="/" alt="Smart Helper">
+      <!-- navbar setting -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+          <% if (title == "Tools") { %>
+            <a class="nav-link active"
+          <% } else { %>
+            <a class="nav-link"
+          <% } %>
+             href="/"><i class="fas fa-sm fa-dungeon"></i><small> Tools</small></a>
+          </li>
+
+          <li class="nav-item">
+          <% if (title == "AiLinks") { %>
+            <a class="nav-link active"
+          <% } else { %>
+            <a class="nav-link"
+          <% } %>
+             href="/ailinks"><i class="fas fa-sm fa-info-circle"></i><small> AiLinks</small></a>
+          </li>
+
+          <li class="nav-item">
+          <% if (title == "Blog") { %>
+            <a class="nav-link active"
+          <% } else { %>
+            <a class="nav-link"
+          <% } %>
+            href="/blog"><i class="fab fa-sm fa-elementor"></i><small> Blog</small></a>
+          </li>
+
+          <li class="nav-item">
+          <% if (title == "News") { %>
+            <a class="nav-link active"
+          <% } else { %>
+            <a class="nav-link"
+          <% } %>
+            href="/news"><i class="fa-regular fa-paper-plane fa-sm"></i><small> News</small></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

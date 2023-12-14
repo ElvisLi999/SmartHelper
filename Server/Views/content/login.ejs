@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="offset-md-3 col-md-6 col-sm-12">
+            <br><br><br><br><br><br>
+        <div class="login" id="contentArea">
+            <h1 class="display-4">Login</h1>
+            
+                <!-- message area -->
+                  <% if(messages.length > 0) { %>
+                    <div id="messageArea" class="alert alert-danger">
+                        <%= messages %>
+                    </div>
+                  <% } %>
+
+            <form id="loginForm" method="POST" novalidate >
+                
+                <div class="form-group" >
+                    <div class="input-group mb-1">
+                        <span class="input-group-addon">
+                        <i class="fa fa-user">
+                        </i>
+                        </span>
+                        <input type="text" class="form-control" id="username" name="username"  required
+                        value="" placeholder="Please enter your username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <span class="input-group-addon">
+                        <i class="fa fa-lock">
+                        </i>
+                        </span>
+                        <input type="password" class="form-control" id="password" name="password"  required
+                        value="" placeholder="Please enter your password">
+                    </div>
+                </div>   
+
+                <div class="text-right">
+                <button id="submitButton" type="submit" class="btn btn-primary btn-md"><i class="fas fa-sign-in-alt fa-sm"></i> Login</button>
+                <a href="/" id="cancelButton" class="btn btn-secondary btn-md"><i class="fas fa-undo-alt fa-sm"></i> Cancel</a>
+                </div>
+            </form>
+            
+        </div>
+        <p class="text-center text-muted small">
+            <i>Don't have an account?</i> 
+            <a href="/register"><strong>Register Here!</strong></a>
+        </p>
+    </div>
+</div>

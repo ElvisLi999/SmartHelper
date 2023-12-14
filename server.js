@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('./app');
+var app = require('./Server/Config/app');
 var debug = require('debug')('smarthelperproject:server');
 var http = require('http');
 
