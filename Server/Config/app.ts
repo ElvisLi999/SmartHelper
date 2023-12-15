@@ -12,6 +12,25 @@ import logger from 'morgan';
 
 import indexRouter from '../Routes/index';
 
+// DB setup
+
+// import mongo
+import mongoose, {mongo} from 'mongoose';
+
+//DB configuration
+import * as DBConfig from './db';
+mongoose.connect((DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI);
+
+const db = mongoose.connection; // alias for mongoose connection
+db.on('error', function()
+{
+  console.error('connection error:');
+});
+
+db.once('open', function()
+{
+  console.log(`Connected to MongoDB at: ${DBConfig.HostName}`);
+});
 
 const app = express();
 export default app;
