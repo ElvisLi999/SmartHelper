@@ -1,40 +1,42 @@
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-
-let indexRouter = require('../Routes/index');
-
-let app = express();
-
+"use strict";
+/*
+* Author     : Elvis Li
+* Date       : Dec 15, 2023
+* Description: smart helper project
+*/
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const http_errors_1 = __importDefault(require("http-errors"));
+const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const morgan_1 = __importDefault(require("morgan"));
+const index_1 = __importDefault(require("../Routes/index"));
+const app = (0, express_1.default)();
+exports.default = app;
 // view engine setup
-app.set('views', path.join(__dirname, '../Views'));
+app.set('views', path_1.default.join(__dirname, '../Views'));
 app.set('view engine', 'ejs');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../Client')));
-app.use(express.static(path.join(__dirname, '../../node_modules')));
-
-app.use('/', indexRouter);
-
+app.use((0, morgan_1.default)('dev'));
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
+app.use((0, cookie_parser_1.default)());
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../Client')));
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../node_modules')));
+app.use('/', index_1.default);
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(function (req, res, next) {
+    next((0, http_errors_1.default)(404));
 });
-
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error', {title: 'Error', page: 'error'});
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error', { title: 'Error', page: 'error' });
 });
-
-module.exports = app;
+//# sourceMappingURL=app.js.map
