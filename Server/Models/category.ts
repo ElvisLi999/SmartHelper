@@ -40,7 +40,6 @@ const CategorySchema = new Schema({
         type: Date,
         default: Date.now
     }
-
 });
 
 //  update the updatedAt field before saving the document
