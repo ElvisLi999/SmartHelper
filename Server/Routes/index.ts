@@ -4,36 +4,39 @@ import { UserDisplayName } from '../Util';
 const router = express.Router();
 export default router;
 
+/* Get a reference to Util Functions */
+import { AuthGuard } from '../Util';
+
+/* Get Page Controllers */
+import { DisplayToolsPage, DisplayAILinksPage, DisplayNewsPage, DisplayBlogPage, DisplayLoginPage, ProcessLoginPage,DisplayRegisterPage, ProcessRegisterPage, ProcessLogoutPage} from '../Controllers/index';
+
 
 /* GET tools page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Tools' , page: 'tools' });
-});
+router.get('/', DisplayToolsPage);
 
 /* GET tools page. */
-router.get('/tools', function (req, res, next) {
-  res.render('index', { title: 'Tools', page: 'tools' });
-});
+router.get('/tools', DisplayToolsPage);
 
 /* GET AI Toolkit page. */
-router.get('/ailinks', function (req, res, next) {
-  res.render('index', { title: 'AI Links', page: 'ailinks' });
-});
+router.get('/ailinks', DisplayAILinksPage);
 
 /* GET News page. */
-router.get('/news', function (req, res, next) {
-  res.render('index', { title: 'News', page: 'news' });
-});
+router.get('/news', DisplayNewsPage);
 
 /* GET Blog page. */
-router.get('/blog', function (req, res, next) {
-  res.render('index', { title: 'Blog', page: 'blog' });
-});
+router.get('/blog', DisplayBlogPage);
 
 /* GET - display login page. */
-router.get('/login', function (req, res, next) {
-  res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
-});
+router.get('/login', DisplayLoginPage);
 
-/* Post Blog page. */
+/* Post  - process login page*/
+router.post('/login', ProcessLoginPage);
 
+/* Get register page */
+router.get('/register', DisplayRegisterPage);
+
+/* Post  - process register page*/
+router.post('/register', ProcessRegisterPage);
+
+/* Get  - process logout page*/
+router.get('/logout', ProcessLogoutPage);

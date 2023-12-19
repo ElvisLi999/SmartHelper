@@ -3,12 +3,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = void 0;
+exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessBlogPostPage = exports.DisplayBlogPostPage = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
 const passport_1 = __importDefault(require("passport"));
 // create an instance of the User Model
 const user_1 = __importDefault(require("../Models/user"));
 // import Util Functions
 const Util_1 = require("../Util");
+// export pages router settings
+// Display Home Page
+function DisplayToolsPage(req, res, next) {
+    res.render('index', { title: 'Tools', page: 'tools', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.DisplayToolsPage = DisplayToolsPage;
+// Display AI Links Page
+function DisplayAILinksPage(req, res, next) {
+    res.render('index', { title: 'AI Links', page: 'ailinks', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.DisplayAILinksPage = DisplayAILinksPage;
+// Display News Page
+function DisplayNewsPage(req, res, next) {
+    res.render('index', { title: 'News', page: 'news', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.DisplayNewsPage = DisplayNewsPage;
+// Display Blog Page
+function DisplayBlogPage(req, res, next) {
+    res.render('index', { title: 'Blog', page: 'blog', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.DisplayBlogPage = DisplayBlogPage;
+// Display Blog Post Page
+function DisplayBlogPostPage(req, res, next) {
+    res.render('index', { title: 'Post', page: 'blog_Post', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.DisplayBlogPostPage = DisplayBlogPostPage;
+// Process Blog Post page
+function ProcessBlogPostPage(req, res, next) {
+}
+exports.ProcessBlogPostPage = ProcessBlogPostPage;
 /* Display Login or  authentication page */
 function DisplayLoginPage(req, res, next) {
     res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
@@ -44,11 +74,13 @@ function DisplayRegisterPage(req, res, next) {
     res.render('index', { title: 'Register', page: 'register', displayName: (0, Util_1.UserDisplayName)(req) });
 }
 exports.DisplayRegisterPage = DisplayRegisterPage;
+// Process register page
 function ProcessRegisterPage(req, res, next) {
+    console.log("Registration request received:", req.body);
     // instantiate a new User Object
     let newUser = new user_1.default({
         username: req.body.username,
-        emailAddress: req.body.emailAddress,
+        email: req.body.email,
         displayName: req.body.firstName + " " + req.body.lastName
     });
     user_1.default.register(newUser, req.body.password, (err) => {

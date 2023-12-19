@@ -4,32 +4,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const Util_1 = require("../Util");
 const router = express_1.default.Router();
 exports.default = router;
+/* Get Page Controllers */
+const index_1 = require("../Controllers/index");
 /* GET tools page. */
-router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Tools', page: 'tools' });
-});
+router.get('/', index_1.DisplayToolsPage);
 /* GET tools page. */
-router.get('/tools', function (req, res, next) {
-    res.render('index', { title: 'Tools', page: 'tools' });
-});
+router.get('/tools', index_1.DisplayToolsPage);
 /* GET AI Toolkit page. */
-router.get('/ailinks', function (req, res, next) {
-    res.render('index', { title: 'AI Links', page: 'ailinks' });
-});
+router.get('/ailinks', index_1.DisplayAILinksPage);
 /* GET News page. */
-router.get('/news', function (req, res, next) {
-    res.render('index', { title: 'News', page: 'news' });
-});
+router.get('/news', index_1.DisplayNewsPage);
 /* GET Blog page. */
-router.get('/blog', function (req, res, next) {
-    res.render('index', { title: 'Blog', page: 'blog' });
-});
+router.get('/blog', index_1.DisplayBlogPage);
 /* GET - display login page. */
-router.get('/login', function (req, res, next) {
-    res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
-});
-/* Post Blog page. */
+router.get('/login', index_1.DisplayLoginPage);
+/* Post  - process login page*/
+router.post('/login', index_1.ProcessLoginPage);
+/* Get register page */
+router.get('/register', index_1.DisplayRegisterPage);
+/* Post  - process register page*/
+router.post('/register', index_1.ProcessRegisterPage);
+/* Get  - process logout page*/
+router.get('/logout', index_1.ProcessLogoutPage);
 //# sourceMappingURL=index.js.map
