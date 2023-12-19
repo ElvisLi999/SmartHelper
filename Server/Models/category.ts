@@ -28,10 +28,6 @@ const CategorySchema = new Schema({
         type: String,
         required: false 
     }],
-    articles: [{    // articles array related to this category
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Article', // reference to Article model
-    }],
     createdAt: {
         type: Date,
         default: Date.now 
@@ -40,6 +36,8 @@ const CategorySchema = new Schema({
         type: Date,
         default: Date.now
     }
+},
+{   collection: 'categories' 
 });
 
 //  update the updatedAt field before saving the document
@@ -48,5 +46,5 @@ CategorySchema.pre('save', function (next) {
     next();
 });
 
-const Model = mongoose.model('Category', CategorySchema);
-export default Model;
+const Category = mongoose.model('Category', CategorySchema);
+export default Category;

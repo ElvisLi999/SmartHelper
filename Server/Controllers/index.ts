@@ -10,27 +10,35 @@ import { UserDisplayName } from '../Util';
 // export pages router settings
 
 // Display Home Page
-export function DisplayToolsPage(req: Request, res: Response, next: NextFunction): void {
+export function DisplayToolsPage(req: Request, res: Response, next: NextFunction): void 
+{
   res.render('index', {title: 'Tools', page: 'tools', displayName: UserDisplayName(req) });
 }
 
 // Display AI Links Page
-export function DisplayAILinksPage(req: Request, res: Response, next: NextFunction): void {
+export function DisplayAILinksPage(req: Request, res: Response, next: NextFunction): void 
+{
   res.render('index', {title: 'AI Links', page: 'ailinks', displayName: UserDisplayName(req) });
 }
 
 // Display News Page
-export function DisplayNewsPage(req: Request, res: Response, next: NextFunction): void {
+export function DisplayNewsPage(req: Request, res: Response, next: NextFunction): void 
+{
   res.render('index', {title: 'News', page: 'news', displayName: UserDisplayName(req) });
 }
 
 // Display Blog Page
-export function DisplayBlogPage(req: Request, res: Response, next: NextFunction): void {
+export function DisplayBlogPage(req: Request, res: Response, next: NextFunction): void 
+{
   res.render('index', {title: 'Blog', page: 'blog', displayName: UserDisplayName(req) });
 }
 
-// Display Blog Post Page
-export function DisplayBlogPostPage(req: Request, res: Response, next: NextFunction): void {
+// Display Single Article Page
+export function DisplaySingleArticlePage(req: Request, res: Response, next: NextFunction): void 
+{
+  let id = req.params.id;
+  // pass the id to the db
+  // db.articles.find({"_id": id})
   res.render('index', {title: 'Post', page: 'blog_Post', displayName: UserDisplayName(req) });
 }
 

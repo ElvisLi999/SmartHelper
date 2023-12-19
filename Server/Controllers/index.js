@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessBlogPostPage = exports.DisplayBlogPostPage = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
+exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessBlogPostPage = exports.DisplaySingleArticlePage = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
 const passport_1 = __importDefault(require("passport"));
 // create an instance of the User Model
 const user_1 = __importDefault(require("../Models/user"));
@@ -30,11 +30,14 @@ function DisplayBlogPage(req, res, next) {
     res.render('index', { title: 'Blog', page: 'blog', displayName: (0, Util_1.UserDisplayName)(req) });
 }
 exports.DisplayBlogPage = DisplayBlogPage;
-// Display Blog Post Page
-function DisplayBlogPostPage(req, res, next) {
+// Display Single Article Page
+function DisplaySingleArticlePage(req, res, next) {
+    let id = req.params.id;
+    // pass the id to the db
+    // db.articles.find({"_id": id})
     res.render('index', { title: 'Post', page: 'blog_Post', displayName: (0, Util_1.UserDisplayName)(req) });
 }
-exports.DisplayBlogPostPage = DisplayBlogPostPage;
+exports.DisplaySingleArticlePage = DisplaySingleArticlePage;
 // Process Blog Post page
 function ProcessBlogPostPage(req, res, next) {
 }

@@ -2,7 +2,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema; // Schema alias
 
-const SiteSchema = new mongoose.Schema({
+const SiteInfoSchema = new mongoose.Schema({
     siteTitle: {    // website title
         type: String,
         required: true, // title is required
@@ -53,13 +53,16 @@ const SiteSchema = new mongoose.Schema({
         type: Date,
         default: Date.now 
     }
+},
+{
+    collection: 'siteInfos'
 });
 
 // update the update time before saving the document
-SiteSchema.pre('save', function (next) {
+SiteInfoSchema.pre('save', function (next) {
     this.updatedAt = new Date;
     next();
 });
 
-const Model = mongoose.model('Site', SiteSchema);
-export default Model;
+const SiteInfo = mongoose.model('SiteInfo', SiteInfoSchema);
+export default SiteInfo;

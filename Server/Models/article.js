@@ -13,7 +13,7 @@ const ArticleSchema = new Schema({
         trim: true
     },
     author: {
-        type: mongoose_1.default.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
@@ -27,11 +27,13 @@ const ArticleSchema = new Schema({
         trim: true
     },
     category: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
         required: true
     },
     tags: [{
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Tag',
             required: false
         }],
     coverImage: {
@@ -73,17 +75,6 @@ const ArticleSchema = new Schema({
         type: Number,
         default: 0
     },
-    comments: [{
-            author: {
-                type: mongoose_1.default.Schema.Types.ObjectId,
-                ref: 'User'
-            },
-            comment: String,
-            date: {
-                type: Date,
-                default: Date.now
-            }
-        }],
     createdAt: {
         type: Date,
         default: Date.now
@@ -92,12 +83,14 @@ const ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    collection: 'articles'
 });
 //  update the updatedAt field before saving the document
 ArticleSchema.pre('save', function (next) {
     this.updatedAt = new Date();
     next();
 });
-const Model = mongoose_1.default.model('Article', ArticleSchema);
-exports.default = Model;
+const Article = mongoose_1.default.model('Article', ArticleSchema);
+exports.default = Article;
 //# sourceMappingURL=article.js.map

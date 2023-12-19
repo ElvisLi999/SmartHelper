@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const AIToolSchema = new Schema({
+const AILinkSchema = new Schema({
     name: { // ai tool name
         type: String,
         required: true, 
@@ -22,10 +22,11 @@ const AIToolSchema = new Schema({
         required: false, 
         trim: true
     }
-}, {
-    timestamps: true // create and update time stamps
+},
+{
+    collection: 'aiLinks'
 });
 
-const Model = mongoose.model('AITool', AIToolSchema);
+const AILink = mongoose.model('AILink', AILinkSchema);
 
-export default Model;
+export default AILink;

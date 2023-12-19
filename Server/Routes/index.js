@@ -18,6 +18,8 @@ router.get('/ailinks', index_1.DisplayAILinksPage);
 router.get('/news', index_1.DisplayNewsPage);
 /* GET Blog page. */
 router.get('/blog', index_1.DisplayBlogPage);
+/* GET - single article page. */
+router.get('/article/:id', index_1.DisplaySingleArticlePage);
 /* GET - display login page. */
 router.get('/login', index_1.DisplayLoginPage);
 /* Post  - process login page*/

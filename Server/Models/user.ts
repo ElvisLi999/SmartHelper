@@ -80,6 +80,6 @@ declare global
 // By default, it uses 'username' as the login field
 UserSchema.plugin(passportLocalMongoose);
 
-const Model = mongoose.model<IUser>('User', UserSchema);
-export default Model;
+const User = mongoose.model<IUser>('User', UserSchema);
+export default User;
 

@@ -9,7 +9,7 @@ const ArticleSchema = new Schema({
         trim: true
     },
     author: {   // article author
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
@@ -23,11 +23,13 @@ const ArticleSchema = new Schema({
         trim: true
     },
     category: { // article category
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
         required: true
     },
     tags: [{    // article tags
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
         required: false
     }],
     coverImage: {   // article cover image
@@ -69,17 +71,6 @@ const ArticleSchema = new Schema({
         type: Number,
         default: 0
     },
-    comments: [{    // article comments
-        author: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        comment: String,
-        date: {
-            type: Date,
-            default: Date.now
-        }
-    }],
     createdAt: {    // article created date
         type: Date,
         default: Date.now
@@ -88,6 +79,9 @@ const ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     }
+},
+{
+    collection: 'articles'
 });
 
 //  update the updatedAt field before saving the document
@@ -96,5 +90,5 @@ ArticleSchema.pre('save', function (next) {
     next();
 });
 
-const Model = mongoose.model('Article', ArticleSchema);
-export default Model;
+const Article = mongoose.model('Article', ArticleSchema);
+export default Article;

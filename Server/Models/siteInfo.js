@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // create the website model that including all necessary fields for SEO and management
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema; // Schema alias
-const SiteSchema = new mongoose_1.default.Schema({
+const SiteInfoSchema = new mongoose_1.default.Schema({
     siteTitle: {
         type: String,
         required: true, // title is required
@@ -57,12 +57,14 @@ const SiteSchema = new mongoose_1.default.Schema({
         type: Date,
         default: Date.now
     }
+}, {
+    collection: 'siteInfos'
 });
 // update the update time before saving the document
-SiteSchema.pre('save', function (next) {
+SiteInfoSchema.pre('save', function (next) {
     this.updatedAt = new Date;
     next();
 });
-const Model = mongoose_1.default.model('Site', SiteSchema);
-exports.default = Model;
-//# sourceMappingURL=site.js.map
+const SiteInfo = mongoose_1.default.model('SiteInfo', SiteInfoSchema);
+exports.default = SiteInfo;
+//# sourceMappingURL=siteInfo.js.map

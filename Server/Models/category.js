@@ -32,10 +32,6 @@ const CategorySchema = new Schema({
             type: String,
             required: false
         }],
-    articles: [{
-            type: mongoose_1.default.Schema.Types.ObjectId,
-            ref: 'Article', // reference to Article model
-        }],
     createdAt: {
         type: Date,
         default: Date.now
@@ -44,12 +40,13 @@ const CategorySchema = new Schema({
         type: Date,
         default: Date.now
     }
+}, { collection: 'categories'
 });
 //  update the updatedAt field before saving the document
 CategorySchema.pre('save', function (next) {
     this.updatedAt = new Date();
     next();
 });
-const Model = mongoose_1.default.model('Category', CategorySchema);
-exports.default = Model;
+const Category = mongoose_1.default.model('Category', CategorySchema);
+exports.default = Category;
 //# sourceMappingURL=category.js.map

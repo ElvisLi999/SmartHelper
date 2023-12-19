@@ -52,6 +52,6 @@ const UserSchema = new Schema({
 // Apply the passport-local-mongoose plugin to UserSchema
 // By default, it uses 'username' as the login field
 UserSchema.plugin(passport_local_mongoose_1.default);
-const Model = mongoose_1.default.model('User', UserSchema);
-exports.default = Model;
+const User = mongoose_1.default.model('User', UserSchema);
+exports.default = User;
 //# sourceMappingURL=user.js.map

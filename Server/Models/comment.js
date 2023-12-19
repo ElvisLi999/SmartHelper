@@ -3,19 +3,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// create a Tag model that including all necessary fields for article classification
+// create a comment model that including all necessary fields for article comments
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema; // Schema alias
-const TagSchema = new Schema({
-    name: {
+const CommentSchema = new Schema({
+    articleId: [{
+            type: Schema.Types.ObjectId, // article id
+            ref: 'Article', // reference to Article model
+            required: true
+        }],
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    content: {
         type: String,
         required: true,
-        unique: true, // make sure tag name is unique
-        trim: true // remove white space on two ends
-    },
-    description: {
-        type: String,
-        required: false,
         trim: true
     },
     createdAt: {
@@ -25,15 +29,15 @@ const TagSchema = new Schema({
     updatedAt: {
         type: Date,
         default: Date.now
-    },
+    }
 }, {
-    collection: 'tags'
+    collection: 'comments'
 });
 //  update the updatedAt field before saving the document
-TagSchema.pre('save', function (next) {
+CommentSchema.pre('save', function (next) {
     this.updatedAt = new Date();
     next();
 });
-const Tag = mongoose_1.default.model('Tag', TagSchema);
-exports.default = Tag;
-//# sourceMappingURL=tag.js.map
+const Comment = mongoose_1.default.model('Tag', CommentSchema);
+exports.default = Comment;
+//# sourceMappingURL=comment.js.map

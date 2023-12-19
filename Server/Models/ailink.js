@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
-const AIToolSchema = new Schema({
+const AILinkSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -27,8 +27,8 @@ const AIToolSchema = new Schema({
         trim: true
     }
 }, {
-    timestamps: true // create and update time stamps
+    collection: 'aiLinks'
 });
-const Model = mongoose_1.default.model('AITool', AIToolSchema);
-exports.default = Model;
-//# sourceMappingURL=aitool.js.map
+const AILink = mongoose_1.default.model('AILink', AILinkSchema);
+exports.default = AILink;
+//# sourceMappingURL=ailink.js.map

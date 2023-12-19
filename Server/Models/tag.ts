@@ -22,11 +22,9 @@ const TagSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    articles: [{    // articles array related to this tag
-        type: mongoose.Schema.Types.ObjectId,   // article id
-        ref: 'Article' // reference to Article model
-    }]
-
+},
+{
+       collection: 'tags'
 });
 
 //  update the updatedAt field before saving the document
@@ -35,5 +33,5 @@ TagSchema.pre('save', function (next) {
     next();
 });
 
-const Model = mongoose.model('Tag', TagSchema);
-export default Model;
+const Tag = mongoose.model('Tag', TagSchema);
+export default Tag;
