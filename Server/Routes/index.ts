@@ -1,5 +1,6 @@
 
 import express from 'express';
+import { UserDisplayName } from '../Util';
 const router = express.Router();
 export default router;
 
@@ -28,4 +29,11 @@ router.get('/news', function (req, res, next) {
 router.get('/blog', function (req, res, next) {
   res.render('index', { title: 'Blog', page: 'blog' });
 });
+
+/* GET - display login page. */
+router.get('/login', function (req, res, next) {
+  res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
+});
+
+/* Post Blog page. */
 

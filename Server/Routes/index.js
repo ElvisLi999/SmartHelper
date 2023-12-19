@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const Util_1 = require("../Util");
 const router = express_1.default.Router();
 exports.default = router;
 /* GET tools page. */
@@ -26,4 +27,9 @@ router.get('/news', function (req, res, next) {
 router.get('/blog', function (req, res, next) {
     res.render('index', { title: 'Blog', page: 'blog' });
 });
+/* GET - display login page. */
+router.get('/login', function (req, res, next) {
+    res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });
+});
+/* Post Blog page. */
 //# sourceMappingURL=index.js.map
