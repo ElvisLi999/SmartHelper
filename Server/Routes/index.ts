@@ -8,7 +8,7 @@ export default router;
 import { AuthGuard } from '../Util';
 
 /* Get Page Controllers */
-import { DisplayToolsPage, DisplayAILinksPage, DisplayNewsPage, DisplayBlogPage, DisplaySingleArticlePage, DisplayLoginPage, ProcessLoginPage,DisplayRegisterPage, ProcessRegisterPage, ProcessLogoutPage} from '../Controllers/index';
+import { DisplayToolsPage, DisplayAILinksPage, DisplayNewsPage, DisplayBlogPage, DisplayArticleById, DisplayLoginPage, ProcessLoginPage,DisplayRegisterPage, ProcessRegisterPage, ProcessLogoutPage} from '../Controllers/index';
 
 
 /* GET tools page. */
@@ -27,7 +27,7 @@ router.get('/news', DisplayNewsPage);
 router.get('/blog', DisplayBlogPage);
 
 /* GET - single article page. */
-router.get('/article/:id', DisplaySingleArticlePage);
+router.get('/article/:id', DisplayArticleById);
 
 /* GET - display login page. */
 router.get('/login', DisplayLoginPage);

@@ -3,10 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessBlogPostPage = exports.DisplaySingleArticlePage = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
+exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
 const passport_1 = __importDefault(require("passport"));
-// create an instance of the User Model
+// create instances of the Models
 const user_1 = __importDefault(require("../Models/user"));
+const article_1 = __importDefault(require("../Models/article"));
 // import Util Functions
 const Util_1 = require("../Util");
 // export pages router settings
@@ -31,13 +32,29 @@ function DisplayBlogPage(req, res, next) {
 }
 exports.DisplayBlogPage = DisplayBlogPage;
 // Display Single Article Page
-function DisplaySingleArticlePage(req, res, next) {
-    let id = req.params.id;
-    // pass the id to the db
-    // db.articles.find({"_id": id})
-    res.render('index', { title: 'Post', page: 'blog_Post', displayName: (0, Util_1.UserDisplayName)(req) });
+function DisplayArticleById(req, res, next) {
+    let articleId = req.params.id;
+    // use the Article model to query the Articles collection and fill author field
+    article_1.default.findById(articleId).populate('author').exec()
+        .then((articleToDisplay) => {
+        if (!articleToDisplay) {
+            res.status(404).send('Article not found');
+            return;
+        }
+        // find the article, 
+        res.render('index', {
+            title: articleToDisplay.title,
+            page: 'article',
+            article: articleToDisplay
+            // other fields
+        });
+    })
+        .catch((err) => {
+        console.error('Error fetching article:', err);
+        next(err);
+    });
 }
-exports.DisplaySingleArticlePage = DisplaySingleArticlePage;
+exports.DisplayArticleById = DisplayArticleById;
 // Process Blog Post page
 function ProcessBlogPostPage(req, res, next) {
 }

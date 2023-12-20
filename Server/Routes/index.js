@@ -19,7 +19,7 @@ router.get('/news', index_1.DisplayNewsPage);
 /* GET Blog page. */
 router.get('/blog', index_1.DisplayBlogPage);
 /* GET - single article page. */
-router.get('/article/:id', index_1.DisplaySingleArticlePage);
+router.get('/article/:id', index_1.DisplayArticleById);
 /* GET - display login page. */
 router.get('/login', index_1.DisplayLoginPage);
 /* Post  - process login page*/

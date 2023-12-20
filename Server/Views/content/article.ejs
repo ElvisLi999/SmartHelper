@@ -1,0 +1,45 @@
+<div class="container py-4 container-background">
+<!-- Main content of News -->
+  <div class="p-5 mb-4 container-background rounded-3">
+    <div class="container-fluid py-5 container-background">
+      <h1 class="display-1 fw-bold"><%= article.title %></h1>
+       <p>By <%= article.author.displayName %> - <%= article.publishedAt.toDateString() %></p>
+        <img src="<%= article.coverImage %>" alt="Cover Image" style="max-width: 100%;">
+        <div class="article-content">
+            <%- article.content %>
+        </div>
+
+        <!-- More article info -->
+        <% if (article.summary) { %>
+            <div class="article-summary">
+                <p><%= article.summary %></p>
+            </div>
+        <% } %>
+
+        <div class="article-content">
+            <%- article.content %>
+        </div>
+
+        <!-- 分类 -->
+        <% if (article.category) { %>
+            <div class="article-category">
+                <p>Category: <%= article.category %></p>
+            </div>
+        <% } %>
+
+        <!-- 标签 -->
+        <% if (article.tags && article.tags.length > 0) { %>
+            <div class="article-tags">
+                <p>Tags: <%= article.tags.join(', ') %></p>
+            </div>
+        <% } %>
+
+        <!-- 点赞数和浏览量 -->
+        <div class="article-stats">
+            <p>Likes: <%= article.likes %></p>
+            <p>Views: <%= article.views %></p>
+        </div>
+
+    </div>
+  </div>
+</div>

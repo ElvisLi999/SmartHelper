@@ -1,11 +1,15 @@
 import express, {Request, Response, NextFunction} from 'express';
 import passport from 'passport';
 
-// create an instance of the User Model
+// create instances of the Models
 import User from '../Models/user';
+import Article from '../Models/article';
 
 // import Util Functions
 import { UserDisplayName } from '../Util';
+import { AnyKeys } from 'mongoose';
+
+
 
 // export pages router settings
 
@@ -34,12 +38,29 @@ export function DisplayBlogPage(req: Request, res: Response, next: NextFunction)
 }
 
 // Display Single Article Page
-export function DisplaySingleArticlePage(req: Request, res: Response, next: NextFunction): void 
-{
-  let id = req.params.id;
-  // pass the id to the db
-  // db.articles.find({"_id": id})
-  res.render('index', {title: 'Post', page: 'blog_Post', displayName: UserDisplayName(req) });
+export function DisplayArticleById(req: Request, res: Response, next: NextFunction): void {
+  let articleId = req.params.id;
+
+    // use the Article model to query the Articles collection and fill author field
+    Article.findById(articleId).populate('author').exec()
+        .then((articleToDisplay) => {
+            if (!articleToDisplay) {
+                res.status(404).send('Article not found');
+                return;
+            }
+
+            // find the article, 
+            res.render('index', { 
+                title: articleToDisplay.title,
+                page: 'article', 
+                article: articleToDisplay
+                // other fields
+            });
+        })
+        .catch((err) => {
+            console.error('Error fetching article:', err);
+            next(err); 
+        });
 }
 
 // Process Blog Post page
