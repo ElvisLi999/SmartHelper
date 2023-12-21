@@ -36,4 +36,5 @@ TagSchema.pre('save', function (next) {
 });
 const Tag = mongoose_1.default.model('Tag', TagSchema);
 exports.default = Tag;
+console.log('Tag model registered');
 //# sourceMappingURL=tag.js.map

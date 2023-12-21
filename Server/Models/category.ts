@@ -1,6 +1,15 @@
 // Category model including all necessary fields for article classification
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema; // Schema alias
+interface ICategory extends Document {
+    name: string;
+    description: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string[];
+    createdAt: Date;
+    updatedAt: Date;
+  }
 
 const CategorySchema = new Schema({
     name: { // category name
@@ -46,5 +55,7 @@ CategorySchema.pre('save', function (next) {
     next();
 });
 
-const Category = mongoose.model('Category', CategorySchema);
+const Category = mongoose.model<ICategory>('Category', CategorySchema);
 export default Category;
+
+console.log('Category model registered');

@@ -83,3 +83,5 @@ UserSchema.plugin(passportLocalMongoose);
 const User = mongoose.model<IUser>('User', UserSchema);
 export default User;
 
+console.log('User model registered');
+

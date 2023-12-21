@@ -3,7 +3,12 @@ import passport from 'passport';
 
 // create instances of the Models
 import User from '../Models/user';
+import Category from '../Models/category';
+import Tag from '../Models/tag';
+import Comment from '../Models/comment';
+console.log(Category, Tag, Comment); // avoid unused error, these models should be read before Article model
 import Article from '../Models/article';
+
 
 // import Util Functions
 import { UserDisplayName } from '../Util';
@@ -42,11 +47,28 @@ export function DisplayArticleById(req: Request, res: Response, next: NextFuncti
   let articleId = req.params.id;
 
     // use the Article model to query the Articles collection and fill author field
-    Article.findById(articleId).populate('author').exec()
+    Article.findById(articleId)
+        .populate({
+            path: 'author',
+            select: 'displayName' // only return the User's displayName
+        })
+        .populate({
+            path: 'category',
+            select: 'name' 
+        })
+        .populate({
+            path: 'tags',
+            select: 'name'
+        })
+        .exec()
         .then((articleToDisplay) => {
             if (!articleToDisplay) {
                 res.status(404).send('Article not found');
                 return;
+            }
+            // Generate cover image URL
+            if (articleToDisplay.coverImage && articleToDisplay.coverImage.length > 0) {
+                articleToDisplay.coverImage = '/images/' + articleToDisplay.coverImage;
             }
 
             // find the article, 

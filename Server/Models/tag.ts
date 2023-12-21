@@ -2,6 +2,13 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema; // Schema alias
 
+interface ITag extends mongoose.Document {
+    name: string;
+    description: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }
+
 const TagSchema = new Schema({
     name: { // tag name
         type: String,
@@ -33,5 +40,7 @@ TagSchema.pre('save', function (next) {
     next();
 });
 
-const Tag = mongoose.model('Tag', TagSchema);
+const Tag = mongoose.model<ITag>('Tag', TagSchema);
 export default Tag;
+
+console.log('Tag model registered');

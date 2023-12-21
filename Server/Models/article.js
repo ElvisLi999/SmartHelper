@@ -112,4 +112,5 @@ ArticleSchema.pre('save', function (next) {
 });
 const Article = mongoose_1.default.model('Article', ArticleSchema);
 exports.default = Article;
+console.log('Article model registered');
 //# sourceMappingURL=article.js.map

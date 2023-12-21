@@ -113,3 +113,5 @@ ArticleSchema.pre('save', function (next) {
 
 const Article = mongoose.model<IArticle>('Article', ArticleSchema);
 export default Article;
+
+console.log('Article model registered');

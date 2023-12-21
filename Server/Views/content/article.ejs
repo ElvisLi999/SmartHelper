@@ -4,7 +4,9 @@
     <div class="container-fluid py-5 container-background">
       <h1 class="display-1 fw-bold"><%= article.title %></h1>
        <p>By <%= article.author.displayName %> - <%= article.publishedAt.toDateString() %></p>
-        <img src="<%= article.coverImage %>" alt="Cover Image" style="max-width: 100%;">
+       <% if (article.coverImage) { %>
+            <img src="<%= article.coverImage %>" alt="Cover Image" style="max-width: 100%">
+       <% } %>
         <div class="article-content">
             <%- article.content %>
         </div>
@@ -20,21 +22,25 @@
             <%- article.content %>
         </div>
 
-        <!-- 分类 -->
+        <!-- category -->
         <% if (article.category) { %>
             <div class="article-category">
-                <p>Category: <%= article.category %></p>
+                <p>Category: <%= article.category.name %></p>
             </div>
         <% } %>
 
-        <!-- 标签 -->
+        <!-- tags -->
         <% if (article.tags && article.tags.length > 0) { %>
             <div class="article-tags">
-                <p>Tags: <%= article.tags.join(', ') %></p>
+                <p>Tags:   
+                    <% article.tags.forEach(function(tag, index) { %>
+                    <%= tag.name %><%= index !== article.tags.length - 1 ? ', ' : '' %>
+                    <% }); %>
+                </p>
             </div>
         <% } %>
 
-        <!-- 点赞数和浏览量 -->
+        <!-- likes and views data -->
         <div class="article-stats">
             <p>Likes: <%= article.likes %></p>
             <p>Views: <%= article.views %></p>

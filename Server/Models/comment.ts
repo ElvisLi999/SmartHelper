@@ -38,5 +38,7 @@ CommentSchema.pre('save', function (next) {
     next();
 });
 
-const Comment = mongoose.model('Tag', CommentSchema);
+const Comment = mongoose.model('Comment', CommentSchema);
 export default Comment;
+
+console.log('Comment model registered');

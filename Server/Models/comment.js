@@ -38,6 +38,7 @@ CommentSchema.pre('save', function (next) {
     this.updatedAt = new Date();
     next();
 });
-const Comment = mongoose_1.default.model('Tag', CommentSchema);
+const Comment = mongoose_1.default.model('Comment', CommentSchema);
 exports.default = Comment;
+console.log('Comment model registered');
 //# sourceMappingURL=comment.js.map

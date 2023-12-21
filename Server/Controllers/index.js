@@ -7,6 +7,10 @@ exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegiste
 const passport_1 = __importDefault(require("passport"));
 // create instances of the Models
 const user_1 = __importDefault(require("../Models/user"));
+const category_1 = __importDefault(require("../Models/category"));
+const tag_1 = __importDefault(require("../Models/tag"));
+const comment_1 = __importDefault(require("../Models/comment"));
+console.log(category_1.default, tag_1.default, comment_1.default); // avoid unused error, these models should be read before Article model
 const article_1 = __importDefault(require("../Models/article"));
 // import Util Functions
 const Util_1 = require("../Util");
@@ -35,11 +39,28 @@ exports.DisplayBlogPage = DisplayBlogPage;
 function DisplayArticleById(req, res, next) {
     let articleId = req.params.id;
     // use the Article model to query the Articles collection and fill author field
-    article_1.default.findById(articleId).populate('author').exec()
+    article_1.default.findById(articleId)
+        .populate({
+        path: 'author',
+        select: 'displayName' // only return the User's displayName
+    })
+        .populate({
+        path: 'category',
+        select: 'name'
+    })
+        .populate({
+        path: 'tags',
+        select: 'name'
+    })
+        .exec()
         .then((articleToDisplay) => {
         if (!articleToDisplay) {
             res.status(404).send('Article not found');
             return;
+        }
+        // Generate cover image URL
+        if (articleToDisplay.coverImage && articleToDisplay.coverImage.length > 0) {
+            articleToDisplay.coverImage = '/images/' + articleToDisplay.coverImage;
         }
         // find the article, 
         res.render('index', {

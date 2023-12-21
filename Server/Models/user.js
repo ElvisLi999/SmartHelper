@@ -54,4 +54,5 @@ const UserSchema = new Schema({
 UserSchema.plugin(passport_local_mongoose_1.default);
 const User = mongoose_1.default.model('User', UserSchema);
 exports.default = User;
+console.log('User model registered');
 //# sourceMappingURL=user.js.map
