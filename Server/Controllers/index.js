@@ -32,7 +32,38 @@ function DisplayNewsPage(req, res, next) {
 exports.DisplayNewsPage = DisplayNewsPage;
 // Display Blog Page
 function DisplayBlogPage(req, res, next) {
-    res.render('index', { title: 'Blog', page: 'blog', displayName: (0, Util_1.UserDisplayName)(req) });
+    const page = parseInt(req.query.page) || 1; //get current page number
+    const limit = 3; // limit number of articles per page
+    const skip = (page - 1) * limit; // calculate the number of articles to skip
+    console.log(`Page: ${page}, Skip: ${skip}, Limit: ${limit}`); // 日志输出当前的分页参数
+    // get the total number of articles
+    article_1.default.countDocuments().exec()
+        .then(count => {
+        console.log(`Total articles count: ${count}`); // 日志输出文章总数
+        // get the articles for the current page
+        return article_1.default.find()
+            .sort({ publishedAt: -1 }) // sort by publish date descending
+            .skip(skip)
+            .limit(limit)
+            .select('title author publishedAt summary likes views') // select only needed fields
+            .then(articles => ({
+            articles,
+            count
+        }));
+    })
+        .then(({ articles, count }) => {
+        // load the view and pass the data
+        res.render('index', {
+            title: 'Blog',
+            page: 'blog',
+            articles: articles,
+            currentPage: page,
+            totalPages: Math.ceil(count / limit)
+        });
+    })
+        .catch(err => {
+        next(err); // 错误处理
+    });
 }
 exports.DisplayBlogPage = DisplayBlogPage;
 // Display Single Article Page
