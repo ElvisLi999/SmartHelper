@@ -8,7 +8,7 @@ export default router;
 import { AuthGuard } from '../Util';
 
 /* Get Page Controllers */
-import { DisplayToolsPage, DisplayAILinksPage, DisplayNewsPage, DisplayBlogPage, DisplayArticleById, DisplayLoginPage, ProcessLoginPage,DisplayRegisterPage, ProcessRegisterPage, ProcessLogoutPage} from '../Controllers/index';
+import { DisplayToolsPage, DisplayAILinksPage, DisplayNewsPage, DisplayBlogPage, DisplayArticleById, DisplayDashboardPage, DisplayUsersListPage, DisplayUpdateUserInfoByIdPage, ProcessUpdateUserInfoByIdPage, ProcessDeleteUserByIdPage, DisplayLoginPage, ProcessLoginPage,DisplayRegisterPage, ProcessRegisterPage, ProcessLogoutPage} from '../Controllers/index';
 
 
 /* GET tools page. */
@@ -29,6 +29,20 @@ router.get('/blog', DisplayBlogPage);
 /* GET - single article page. */
 router.get('/article/:id', DisplayArticleById);
 
+/* GET - user dashboard page. */
+router.get('/dashboard', AuthGuard, DisplayDashboardPage);
+
+/* GET user management page */
+router.get('/userManagement',AuthGuard, DisplayUsersListPage);
+
+/* GET - display /userManagement/update/:id page. */
+router.get('/userManagement/update/:id',AuthGuard, DisplayUpdateUserInfoByIdPage);
+
+/* POST - process /userManagement/update/:id page. */
+router.post('/userManagement/update/:id',AuthGuard, ProcessUpdateUserInfoByIdPage);
+
+/* GET - process /userManagement/delete/:id. */
+router.get('/userManagement/delete/:id',AuthGuard, ProcessDeleteUserByIdPage)
 /* GET - display login page. */
 router.get('/login', DisplayLoginPage);
 

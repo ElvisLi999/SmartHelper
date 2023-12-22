@@ -11,6 +11,7 @@ interface IUser extends mongoose.Document {
     role: string;
     profilePicture: string;
     bio: string;
+    isActive: boolean;
     createdAt: Date;
     updatedAt: Date;
     // could add other fields or methods provided by passport-local-mongoose
@@ -47,6 +48,11 @@ const UserSchema = new Schema({
         type: String,
         required: false // bio is optional
     },
+    isActive: {
+        type: Boolean,
+        default: true, // default is active
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now // create time, default is now
@@ -71,6 +77,7 @@ declare global
         role: String,
         profilePicture: String,
         bio: String,
+        isActive: Boolean,
         createdAt: Date,
         updatedAt: Date
     }

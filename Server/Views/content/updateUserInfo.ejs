@@ -1,0 +1,41 @@
+<div class="row justify-content-lg-center g-3">
+    <h1 class="text-center"><%= title %> User </h1>
+
+    <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="username">Username</span>
+            <input id="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="Username"
+            name="username" value="<%= user.username %>" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="email">Email</span>
+            <input id="email" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="Email"
+            name="email" value="<%= user.email %>" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="displayName">Display Name</span>
+            <input id="displayName" type="text" class="form-control" placeholder="Display Name" aria-label="Display Name" aria-describedby="Display Name"
+            name="displayName" value="<%= user.displayName %>" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="role">Role</span>
+            <input id="role" type="text" class="form-control" placeholder="Role" aria-label="Role" aria-describedby="Role"
+            name="role" value="<%= user.role %>" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="role">IsActive</span>
+            <input id="isActive" type="text" class="form-control" placeholder="isActive" aria-label="Is Active" aria-describedby="Is Active"
+            name="isActive" value="<%= user.isActive %>" required>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-success" id="updateButton"><i class="fas fa-edit fa-lg"></i> Update</button>
+            <a href="/userManagement" id="cancelButton" class="btn btn-info "><i class="fas fa-undo-alt"></i> Cancel</a>
+            <a href="/userManagement/delete/<%= user._id %>" id="deleteButton" class="btn btn-danger delete"><i class="far fa-trash-alt"></i> Delete</a>
+        </div>
+    </form>
+</div>

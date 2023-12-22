@@ -1,0 +1,36 @@
+<h1><%= title %></h1>
+<br>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DisplayName</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">isActive</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let count=0; count < users.length; count++) { %>
+                    <!-- Repeatable Row Template -->>
+                    <tr>
+                        <th scope="row"><%= count + 1 %></th>
+                        <td><%= users[count].username %></td>
+                        <td><%= users[count].email %></td>
+                        <td><%= users[count].displayName %></td>
+                        <td><%= users[count].role %></td>
+                        <td><%= users[count].isActive ? 'Active' : 'Inactive' %></td>
+
+                        <td class="text-center"><a href="/userManagement/update/<%= users[count]._id %>" class="btn btn-primary btn-sm update"><i class="fas fa-edit fa-sm"></i> Update</a></td>
+                        <td class="text-center"><a href="/userManagement/delete/<%= users[count]._id %>" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>

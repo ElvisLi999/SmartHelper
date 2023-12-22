@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
+exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessDeleteUserByIdPage = exports.ProcessUpdateUserInfoByIdPage = exports.DisplayUpdateUserInfoByIdPage = exports.DisplayUsersListPage = exports.DisplayDashboardPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
 const passport_1 = __importDefault(require("passport"));
 // create instances of the Models
 const user_1 = __importDefault(require("../Models/user"));
@@ -111,6 +111,78 @@ exports.DisplayArticleById = DisplayArticleById;
 function ProcessBlogPostPage(req, res, next) {
 }
 exports.ProcessBlogPostPage = ProcessBlogPostPage;
+/* Display Dashboard page */
+function DisplayDashboardPage(req, res, next) {
+    res.render('index', { title: 'Dashboard', page: 'dashboard', user: req.user });
+}
+exports.DisplayDashboardPage = DisplayDashboardPage;
+//(R)ead users list in CRUD
+function DisplayUsersListPage(req, res, next) {
+    // db.users.find()
+    user_1.default.find().sort({ "username": 1 })
+        .then((usersCollection) => {
+        res.render('index', { title: 'Users', page: 'userManagement', users: usersCollection, displayName: (0, Util_1.UserDisplayName)(req) });
+    })
+        .catch((err) => {
+        console.error(err);
+        res.end(err);
+    });
+}
+exports.DisplayUsersListPage = DisplayUsersListPage;
+// Display (U)pdate User Info page
+function DisplayUpdateUserInfoByIdPage(req, res, next) {
+    let id = req.params.id;
+    // pass the id to the db
+    // db.users.find({"_id": id})
+    user_1.default.findById(id)
+        .then((user) => {
+        res.render('index', { title: 'Update', page: 'updateUserInfo', user: user, displayName: (0, Util_1.UserDisplayName)(req) });
+    })
+        .catch((err) => {
+        console.error(err);
+        res.end(err);
+    });
+}
+exports.DisplayUpdateUserInfoByIdPage = DisplayUpdateUserInfoByIdPage;
+// Process (U)pdate User Info page
+function ProcessUpdateUserInfoByIdPage(req, res, next) {
+    let id = req.params.id;
+    // instantiate a new User Item
+    let updatedUserItem = new user_1.default({
+        "_id": id,
+        "username": req.body.username,
+        "email": req.body.email,
+        "displayName": req.body.displayName,
+        "role": req.body.role,
+        "bio": req.body.bio,
+        "profilePicture": req.body.profilePicture,
+        "isActive": req.body.isActive
+    });
+    // find the user item via db.user.update({"_id":id}) and then update
+    user_1.default.updateOne({ _id: id }, updatedUserItem)
+        .then(() => {
+        res.redirect('/userManagement');
+    })
+        .catch((err) => {
+        console.error(err);
+        res.end(err);
+    });
+}
+exports.ProcessUpdateUserInfoByIdPage = ProcessUpdateUserInfoByIdPage;
+// Process (D)elete page
+function ProcessDeleteUserByIdPage(req, res, next) {
+    let id = req.params.id;
+    // db.contacts.remove({"_id: id"})
+    user_1.default.deleteOne({ _id: id })
+        .then(() => {
+        res.redirect('/userManagement');
+    })
+        .catch((err) => {
+        console.error(err);
+        res.end(err);
+    });
+}
+exports.ProcessDeleteUserByIdPage = ProcessDeleteUserByIdPage;
 /* Display Login or  authentication page */
 function DisplayLoginPage(req, res, next) {
     res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });

@@ -1,0 +1,31 @@
+<div class="container py-4 container-background">
+    <!-- Main content of Dashboard -->
+  <div class="p-5 mb-4 container-background rounded-3">
+    <div class="container-fluid py-5 container-background">
+      <p class="col-md-8 fs-2">Hi <%= user.displayName.split(' ')[0].charAt(0).toUpperCase() + user.displayName.split(' ')[0].slice(1).toLowerCase() %>,</p>
+      <h1 class="display-1 fw-bold"><i>Welcome to your</i> dashboard.</h1>
+      <% if (user.role === 'admin') { %>
+        <!-- functions only for admin -->
+        <p>Welcome, Admin! Here are your admin tools...</p>
+
+         <p class="fs-4">User Management</p>
+
+        <!-- User Management Area -->
+
+
+
+
+      <% } else if (user.role === 'author') { %>
+        <!-- functions only for author -->
+        <p>Welcome, Author! Here are your authoring tools...</p>
+      <% } else { %>
+        <!-- functions only for user -->
+        <p>Welcome, User! Here's your content...</p>
+      <% } %>
+
+    <!-- 这里添加共享的功能和信息 -->
+    </div>
+  </div>
+    
+
+</div>

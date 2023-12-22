@@ -118,10 +118,94 @@ export function DisplayArticleById(req: Request, res: Response, next: NextFuncti
         });
 }
 
+
 // Process Blog Post page
 export function ProcessBlogPostPage(req: Request, res: Response, next: NextFunction): void
 {
- 
+
+}
+
+/* Display Dashboard page */
+export function DisplayDashboardPage(req: Request, res: Response, next: NextFunction): void
+{
+  res.render('index', { title: 'Dashboard', page: 'dashboard', user: req.user });
+}
+
+//(R)ead users list in CRUD
+export function DisplayUsersListPage(req: Request, res: Response, next: NextFunction): void
+{
+    // db.users.find()
+    User.find().sort({"username": 1})
+    .then((usersCollection: UserDocument[]) => {
+      res.render('index', { title: 'Users', page: 'userManagement', users: usersCollection, displayName: UserDisplayName(req)   });
+    })
+    .catch((err: Error) => {
+      console.error(err);
+      res.end(err);
+    });
+}
+
+// Display (U)pdate User Info page
+export function DisplayUpdateUserInfoByIdPage(req: Request, res: Response, next: NextFunction): void
+{
+  let id = req.params.id;
+
+  // pass the id to the db
+
+  // db.users.find({"_id": id})
+  User.findById(id)
+  .then((user: UserDocument) => {
+    res.render('index', { title: 'Update', page: 'updateUserInfo', user: user, displayName: UserDisplayName(req)   });
+  })
+  .catch((err: Error) => {
+    console.error(err);
+    res.end(err);
+  });
+}
+
+// Process (U)pdate User Info page
+export function ProcessUpdateUserInfoByIdPage(req: Request, res: Response, next: NextFunction): void
+{
+    let id = req.params.id;
+
+    // instantiate a new User Item
+    let updatedUserItem = new User
+    ({
+      "_id": id,
+      "username": req.body.username,
+      "email": req.body.email,
+      "displayName": req.body.displayName,
+      "role": req.body.role,
+      "bio": req.body.bio,
+      "profilePicture": req.body.profilePicture,
+      "isActive": req.body.isActive
+    });
+
+    // find the user item via db.user.update({"_id":id}) and then update
+    User.updateOne({_id: id}, updatedUserItem)
+    .then(() => {
+        res.redirect('/userManagement');
+    })
+    .catch((err: Error) => {
+        console.error(err);
+        res.end(err);
+    });
+}
+
+// Process (D)elete page
+export function ProcessDeleteUserByIdPage(req: Request, res: Response, next: NextFunction): void
+{
+    let id = req.params.id;
+
+  // db.contacts.remove({"_id: id"})
+  User.deleteOne({_id: id})
+  .then(() => {
+      res.redirect('/userManagement');
+  })
+  .catch((err: Error) => {
+    console.error(err);
+    res.end(err);
+  });
 }
 
 

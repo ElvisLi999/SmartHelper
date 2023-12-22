@@ -38,6 +38,11 @@ const UserSchema = new Schema({
         type: String,
         required: false // bio is optional
     },
+    isActive: {
+        type: Boolean,
+        default: true, // default is active
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now // create time, default is now
