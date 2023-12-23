@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessDeleteUserByIdPage = exports.ProcessUpdateUserInfoByIdPage = exports.DisplayUpdateUserInfoByIdPage = exports.DisplayUsersListPage = exports.DisplayDashboardPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
+exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessUpdateUserInfoByIdPage = exports.DisplayUpdateUserInfoByIdPage = exports.DisplayUsersListPage = exports.DisplayDashboardPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
 const passport_1 = __importDefault(require("passport"));
 // create instances of the Models
 const user_1 = __importDefault(require("../Models/user"));
@@ -170,19 +170,18 @@ function ProcessUpdateUserInfoByIdPage(req, res, next) {
 }
 exports.ProcessUpdateUserInfoByIdPage = ProcessUpdateUserInfoByIdPage;
 // Process (D)elete page
-function ProcessDeleteUserByIdPage(req, res, next) {
-    let id = req.params.id;
-    // db.contacts.remove({"_id: id"})
-    user_1.default.deleteOne({ _id: id })
-        .then(() => {
-        res.redirect('/userManagement');
-    })
-        .catch((err) => {
-        console.error(err);
-        res.end(err);
-    });
-}
-exports.ProcessDeleteUserByIdPage = ProcessDeleteUserByIdPage;
+// export function ProcessDeleteUserByIdPage(req: Request, res: Response, next: NextFunction): void
+// {
+//     let id = req.params.id;
+//   User.deleteOne({_id: id})
+//   .then(() => {
+//       res.redirect('/userManagement');
+//   })
+//   .catch((err: Error) => {
+//     console.error(err);
+//     res.end(err);
+//   });
+// }
 /* Display Login or  authentication page */
 function DisplayLoginPage(req, res, next) {
     res.render('index', { title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: (0, Util_1.UserDisplayName)(req) });

@@ -193,20 +193,19 @@ export function ProcessUpdateUserInfoByIdPage(req: Request, res: Response, next:
 }
 
 // Process (D)elete page
-export function ProcessDeleteUserByIdPage(req: Request, res: Response, next: NextFunction): void
-{
-    let id = req.params.id;
+// export function ProcessDeleteUserByIdPage(req: Request, res: Response, next: NextFunction): void
+// {
+//     let id = req.params.id;
 
-  // db.contacts.remove({"_id: id"})
-  User.deleteOne({_id: id})
-  .then(() => {
-      res.redirect('/userManagement');
-  })
-  .catch((err: Error) => {
-    console.error(err);
-    res.end(err);
-  });
-}
+//   User.deleteOne({_id: id})
+//   .then(() => {
+//       res.redirect('/userManagement');
+//   })
+//   .catch((err: Error) => {
+//     console.error(err);
+//     res.end(err);
+//   });
+// }
 
 
 /* Display Login or  authentication page */

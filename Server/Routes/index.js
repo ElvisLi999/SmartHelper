@@ -31,7 +31,7 @@ router.get('/userManagement/update/:id', Util_1.AuthGuard, index_1.DisplayUpdate
 /* POST - process /userManagement/update/:id page. */
 router.post('/userManagement/update/:id', Util_1.AuthGuard, index_1.ProcessUpdateUserInfoByIdPage);
 /* GET - process /userManagement/delete/:id. */
-router.get('/userManagement/delete/:id', Util_1.AuthGuard, index_1.ProcessDeleteUserByIdPage);
+//router.get('/userManagement/delete/:id',AuthGuard, ProcessDeleteUserByIdPage)
 /* GET - display login page. */
 router.get('/login', index_1.DisplayLoginPage);
 /* Post  - process login page*/

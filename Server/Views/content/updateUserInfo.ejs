@@ -21,21 +21,25 @@
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text" id="role">Role</span>
-            <input id="role" type="text" class="form-control" placeholder="Role" aria-label="Role" aria-describedby="Role"
-            name="role" value="<%= user.role %>" required>
+            <label class="input-group-text" for="role">Role</label>
+            <select class="form-select" id="role" name="role" required>
+                <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+                <option value="author" <%= user.role === 'author' ? 'selected' : '' %>>Author</option>
+                <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+            </select>
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text" id="role">IsActive</span>
-            <input id="isActive" type="text" class="form-control" placeholder="isActive" aria-label="Is Active" aria-describedby="Is Active"
-            name="isActive" value="<%= user.isActive %>" required>
+            <label class="input-group-text" for="isActive">IsActive</label>
+            <select class="form-select" id="isActive" name="isActive" required>
+                <option value="true" <%= user.isActive === true ? 'selected' : '' %>>True</option>
+                <option value="false" <%= user.isActive === false ? 'selected' : '' %>>False</option>
+            </select>
         </div>
         
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="submit" class="btn btn-success" id="updateButton"><i class="fas fa-edit fa-lg"></i> Update</button>
             <a href="/userManagement" id="cancelButton" class="btn btn-info "><i class="fas fa-undo-alt"></i> Cancel</a>
-            <a href="/userManagement/delete/<%= user._id %>" id="deleteButton" class="btn btn-danger delete"><i class="far fa-trash-alt"></i> Delete</a>
         </div>
     </form>
 </div>
