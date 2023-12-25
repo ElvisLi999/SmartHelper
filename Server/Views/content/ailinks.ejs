@@ -1,10 +1,51 @@
 <div class="container py-4 container-background">
-<!-- Main content of AI Links -->
-  <div class="p-5 mb-4 container-background rounded-3">
-    <div class="container-fluid py-5 container-background">
-      <p class="col-md-8 fs-2">Hi there,</p>
-      <h1 class="display-1 fw-bold"><i>Welcome to the</i> AI Links page.</h1>
-      <p class="col-md-12 fs-6 lh-lg">This is the AI Links page.</p>
-    </div>
+
+<!-- Search Part -->
+<div class="row justify-content-center">
+  <div class="col-md-10">
+    <form action="/search" method="get" id="searchForm" class="input-group">
+      <input type="text" name="query" class="form-control" placeholder="Enter search term..." aria-label="Search Term" style="flex-grow: 2;">
+      <select name="searchType" class="form-select" style="max-width: 150px;">
+        <option value="internal">Internal</option>
+        <option value="google">Google</option>
+        <option value="bing">Bing</option>
+      </select>
+      <button type="submit" class="btn btn-primary" style="flex-grow: 0.5;">Search</button>
+    </form>
   </div>
+</div>
+
+<!-- Main content of AI Links -->
+<div class="p-5 mb-4 container-background rounded-3">
+  <div class="container-fluid py-5 container-background">
+    <p class="col-md-8 fs-2">Hi there,</p>
+    <h1 class="display-1 fw-bold"><i>Welcome to the</i> AI Links page.</h1>
+    <p class="col-md-12 fs-6 lh-lg">This is the AI Links page.</p>
+
+    <!-- AI Links Section -->
+    <% if(categorizedLinks && Object.keys(categorizedLinks).length > 0) { %>
+      <% for(let category in categorizedLinks) { %>
+        <h2 class="mt-4"><%= category %></h2>
+        <div class="row">
+          <% categorizedLinks[category].forEach(link => { %>
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title"><%= link.name %></h5>
+                  <p class="card-text"><%= link.description %></p>
+                  <a href="<%= link.url %>" class="btn btn-primary">Visit</a>
+                  <% if(link.imageUrl) { %>
+                    <img src="<%= link.imageUrl %>" alt="<%= link.name %>" class="img-fluid mt-2">
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    <% } else { %>
+      <p>No AI Links found.</p>
+    <% } %>
+  </div>
+</div>
 </div>

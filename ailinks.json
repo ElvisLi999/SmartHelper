@@ -1,0 +1,72 @@
+[
+    {
+        "name": "AI Tool 1",
+        "description": "Advanced data analysis and visualization tool.",
+        "url": "https://aitool1.com",
+        "imageUrl": "https://aitool1.com/image.jpg",
+        "category": "Data Analysis"
+    },
+    {
+        "name": "AI Tool 2",
+        "description": "Machine learning platform for developers.",
+        "url": "https://aitool2.com",
+        "imageUrl": "https://aitool2.com/image.jpg",
+        "category": "Machine Learning"
+    },
+    {
+        "name": "AI Tool 3",
+        "description": "Automated AI-driven market insights.",
+        "url": "https://aitool3.com",
+        "imageUrl": "https://aitool3.com/image.jpg",
+        "category": "Marketing"
+    },
+    {
+        "name": "AI Tool 4",
+        "description": "Natural language processing for enterprise solutions.",
+        "url": "https://aitool4.com",
+        "imageUrl": "https://aitool4.com/image.jpg",
+        "category": "NLP"
+    },
+    {
+        "name": "AI Tool 5",
+        "description": "AI-powered cybersecurity defense system.",
+        "url": "https://aitool5.com",
+        "imageUrl": "https://aitool5.com/image.jpg",
+        "category": "Cybersecurity"
+    },
+    {
+        "name": "AI Tool 6",
+        "description": "Cloud-based AI video editing software.",
+        "url": "https://aitool6.com",
+        "imageUrl": "https://aitool6.com/image.jpg",
+        "category": "Video Editing"
+    },
+    {
+        "name": "AI Tool 7",
+        "description": "Intelligent AI chatbot for customer service.",
+        "url": "https://aitool7.com",
+        "imageUrl": "https://aitool7.com/image.jpg",
+        "category": "Chatbot"
+    },
+    {
+        "name": "AI Tool 8",
+        "description": "AI-driven predictive maintenance for manufacturing.",
+        "url": "https://aitool8.com",
+        "imageUrl": "https://aitool8.com/image.jpg",
+        "category": "Manufacturing"
+    },
+    {
+        "name": "AI Tool 9",
+        "description": "Real-time AI translation services.",
+        "url": "https://aitool9.com",
+        "imageUrl": "https://aitool9.com/image.jpg",
+        "category": "Translation"
+    },
+    {
+        "name": "AI Tool 10",
+        "description": "AI platform for personalized health recommendations.",
+        "url": "https://aitool10.com",
+        "imageUrl": "https://aitool10.com/image.jpg",
+        "category": "Healthcare"
+    }
+]

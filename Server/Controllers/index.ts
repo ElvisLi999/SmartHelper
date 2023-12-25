@@ -8,13 +8,17 @@ import Tag from '../Models/tag';
 import Comment from '../Models/comment';
 console.log(Category, Tag, Comment); // avoid unused error, these models should be read before Article model
 import Article from '../Models/article';
+import AILink, {IAILink} from '../Models/ailink';
 
 
 // import Util Functions
 import { UserDisplayName } from '../Util';
 import { AnyKeys } from 'mongoose';
 
-
+// define the categoried ai links interface
+interface CategorizedLinks {
+  [category: string]: IAILink[];
+}
 
 // export pages router settings
 
@@ -25,10 +29,31 @@ export function DisplayToolsPage(req: Request, res: Response, next: NextFunction
 }
 
 // Display AI Links Page
-export function DisplayAILinksPage(req: Request, res: Response, next: NextFunction): void 
-{
-  res.render('index', {title: 'AI Links', page: 'ailinks', displayName: UserDisplayName(req) });
+export function DisplayAILinksPage(req: Request, res: Response, next: NextFunction): void {
+  AILink.find({})
+  .then((aiLinks: IAILink[]) => {
+   // categorize the links
+    const categorizedLinks: CategorizedLinks = aiLinks.reduce((acc: CategorizedLinks, link: IAILink) => {
+      if (!acc[link.category]) {
+          acc[link.category] = [];
+      }
+      acc[link.category].push(link);
+      return acc;
+  }, {});
+
+  res.render('index', {
+      title: 'AI Links',
+      page: 'ailinks',
+      displayName: UserDisplayName(req),
+      categorizedLinks: categorizedLinks // pass the categorized links to the view
+  });
+  })
+  .catch((error) => {
+  console.error('Error fetching AI Links: ', error);
+  next(error);
+  });
 }
+
 
 // Display News Page
 export function DisplayNewsPage(req: Request, res: Response, next: NextFunction): void 

@@ -12,6 +12,7 @@ const tag_1 = __importDefault(require("../Models/tag"));
 const comment_1 = __importDefault(require("../Models/comment"));
 console.log(category_1.default, tag_1.default, comment_1.default); // avoid unused error, these models should be read before Article model
 const article_1 = __importDefault(require("../Models/article"));
+const ailink_1 = __importDefault(require("../Models/ailink"));
 // import Util Functions
 const Util_1 = require("../Util");
 // export pages router settings
@@ -22,7 +23,27 @@ function DisplayToolsPage(req, res, next) {
 exports.DisplayToolsPage = DisplayToolsPage;
 // Display AI Links Page
 function DisplayAILinksPage(req, res, next) {
-    res.render('index', { title: 'AI Links', page: 'ailinks', displayName: (0, Util_1.UserDisplayName)(req) });
+    ailink_1.default.find({})
+        .then((aiLinks) => {
+        // categorize the links
+        const categorizedLinks = aiLinks.reduce((acc, link) => {
+            if (!acc[link.category]) {
+                acc[link.category] = [];
+            }
+            acc[link.category].push(link);
+            return acc;
+        }, {});
+        res.render('index', {
+            title: 'AI Links',
+            page: 'ailinks',
+            displayName: (0, Util_1.UserDisplayName)(req),
+            categorizedLinks: categorizedLinks // pass the categorized links to the view
+        });
+    })
+        .catch((error) => {
+        console.error('Error fetching AI Links: ', error);
+        next(error);
+    });
 }
 exports.DisplayAILinksPage = DisplayAILinksPage;
 // Display News Page
