@@ -11,12 +11,13 @@
 
 /* Custom css for the card */
 .card-hover:hover {
-   background-color: #9fc5ec;
+   background-color: #d9f4f0
  }
 
  .card-hover2:hover {
-   background-color: #9fc5ec; /* 您希望的悬停时的背景颜色 */
+   background-color: #005B4F; /* 您希望的悬停时的背景颜色 */
  }
+
 
  /* Custom css for the article */
  .article-content p {
