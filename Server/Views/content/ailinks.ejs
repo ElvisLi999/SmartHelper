@@ -15,37 +15,67 @@
   </div>
 </div>
 
-<!-- Main content of AI Links -->
+<!-- Popular AI Links -->
 <div class="p-5 mb-4 container-background rounded-3">
   <div class="container-fluid py-5 container-background">
     <p class="col-md-8 fs-2">Hi there,</p>
     <h1 class="display-1 fw-bold"><i>Welcome to the</i> AI Links page.</h1>
-    <p class="col-md-12 fs-6 lh-lg">This is the AI Links page.</p>
+    <p class="col-md-12 fs-6 lh-lg">Popular AI Tools</p>
 
-    <!-- AI Links Section -->
-    <% if(categorizedLinks && Object.keys(categorizedLinks).length > 0) { %>
-      <% for(let category in categorizedLinks) { %>
-        <h2 class="mt-4"><%= category %></h2>
-        <div class="row">
-          <% categorizedLinks[category].forEach(link => { %>
-            <div class="col-md-4 mb-3">
-              <div class="card h-100">
-                <div class="card-body">
-                  <h5 class="card-title"><%= link.name %></h5>
-                  <p class="card-text"><%= link.description %></p>
-                  <a href="<%= link.url %>" class="btn btn-primary">Visit</a>
-                  <% if(link.imageUrl) { %>
-                    <img src="<%= link.imageUrl %>" alt="<%= link.name %>" class="img-fluid mt-2">
-                  <% } %>
-                </div>
+    <!-- Hot AI Tools Section -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">热门 AI 工具</h2>
+  <div class="row">
+    <!-- 以下每个卡片的样式和之前定义的卡片保持一致 -->
+    <% const hotTools = [
+      { name: 'ChatGPT', description: 'A chatbot based on large language models.', url: 'https://chat.openai.com', imageUrl: 'ChatGPT.png' },
+      { name: 'Microsoft Copilot', description: 'An AI assistant developed by Microsoft.', url: 'https://copilot.microsoft.com', imageUrl: 'MicrosoftCopilot.png' },
+      { name: 'Grammarly', description: 'A digital writing tool using AI to enhance grammar, spelling, clarity, and style.', url: 'https://www.grammarly.com/', imageUrl: 'Grammarly.png' },
+      { name: 'Midjourney', description: 'A creative and imaginative tool powered by AI. ', url: 'https://www.midjourney.com', imageUrl: 'Midjourney.png' }
+    ]; %>
+    <% hotTools.forEach(link => { %>
+      <div class="col-md-3 mb-3">
+        <a href="<%= link.url %>" target="_blank" class="card-hover2">
+          <div class="card h-100 text-center card-hover">
+            <div class="card-body">
+              <% if(link.imageUrl) { %>
+                <img src="/Assets/linkLogos/<%= link.imageUrl %>" alt="<%= link.name %>" class="img-fluid rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+              <% } %>
+              <h5 class="card-title mt-3"><%= link.name %></h5>
+              <p class="card-text"><%= link.description %></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<!-- AI Links Section -->
+<% if(categorizedLinks && Object.keys(categorizedLinks).length > 0) { %>
+  <% for(let category in categorizedLinks) { %>
+    <h2 class="mt-4 text-center"><%= category %></h2>
+    <div class="row">
+      <% categorizedLinks[category].forEach(link => { %>
+        <div class="col-md-4 mb-3">
+          <a href="<%= link.url %>" target="_blank" class=" card-hover2">
+            <div class="card h-100 text-center card-hover">
+              <div class="card-body">
+                <% if(link.imageUrl) { %>
+                  <img src="<%= link.imageUrl %>" alt="<%= link.name %>" class="img-fluid rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+                <% } %>
+                <h5 class="card-title mt-3"><%= link.name %></h5>
+                <p class="card-text"><%= link.description %></p>
               </div>
             </div>
-          <% }) %>
+          </a>
         </div>
-      <% } %>
-    <% } else { %>
-      <p>No AI Links found.</p>
-    <% } %>
+      <% }) %>
+    </div>
+  <% } %>
+<% } else { %>
+  <p>No AI Links found.</p>
+<% } %>
   </div>
 </div>
 </div>

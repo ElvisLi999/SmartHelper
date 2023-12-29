@@ -9,5 +9,72 @@
 
 /* Custom css */
 
+/* Custom css for the card */
+.card-hover:hover {
+   background-color: #9fc5ec;
+ }
+
+ .card-hover2:hover {
+   background-color: #9fc5ec; /* 您希望的悬停时的背景颜色 */
+ }
+
+ /* Custom css for the article */
+ .article-content p {
+   /* 段落样式 */
+   margin-bottom: 1rem;
+   line-height: 1.6;
+   text-align: justify;
+ }
+ 
+ .article-content h2, .article-content h3 {
+   /* 标题样式 */
+   margin-top: 2rem;
+   color: #333;
+ }
+ 
+ .article-content ul, .article-content ol {
+   /* 列表样式 */
+   margin-left: 2rem;
+ }
+ 
+ .article-content li {
+   /* 列表项样式 */
+   margin-bottom: 0.5rem;
+ }
+ 
+.article-content img {
+   /* 图片样式 */
+   max-width: 100%;
+   margin-bottom: 1rem;
+}
+
+.article-content blockquote {
+   /* 引用样式 */
+   margin: 1rem 0;
+   padding: 0.5rem 1rem;
+   border-left: 0.25rem solid #dfe2e5;
+   background-color: #f8f9fa;
+   color: #666;
+}
+
+ .article-stats p, .article-category p, .article-tags p {
+   /* 元数据样式 */
+   color: #666;
+   font-size: 0.9rem;
+ }
+ 
+ .article-tags {
+   /* 标签容器样式 */
+   margin-top: 1rem;
+ }
+ 
+ .article-category {
+   /* 分类容器样式 */
+   margin-top: 1rem;
+ }
+ 
+ /* 可以添加更多样式来自定义这些部分的显示效果 */
+ 
+ 
 
 

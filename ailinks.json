@@ -1,72 +1,135 @@
 [
     {
-        "name": "AI Tool 1",
-        "description": "Advanced data analysis and visualization tool.",
-        "url": "https://aitool1.com",
-        "imageUrl": "https://aitool1.com/image.jpg",
-        "category": "Data Analysis"
+        "name": "ChatGPT",
+        "description": "A chatbot based on large language models",
+        "url": "https://www.openai.com/",
+        "imageUrl": "https://openai.com/chatgpt/image.jpg",
+        "category": "Natural Language Processing"
     },
     {
-        "name": "AI Tool 2",
-        "description": "Machine learning platform for developers.",
-        "url": "https://aitool2.com",
-        "imageUrl": "https://aitool2.com/image.jpg",
+        "name": "TensorFlow",
+        "description": "Open-source ML library for numerical computation",
+        "url": "https://www.tensorflow.org/",
+        "imageUrl": "https://tensorflow.org/image.jpg",
         "category": "Machine Learning"
     },
     {
-        "name": "AI Tool 3",
-        "description": "Automated AI-driven market insights.",
-        "url": "https://aitool3.com",
-        "imageUrl": "https://aitool3.com/image.jpg",
-        "category": "Marketing"
+        "name": "IBM Watson",
+        "description": "AI services including language, vision, and analysis",
+        "url": "https://www.ibm.com/watson",
+        "imageUrl": "https://ibm.com/watson/image.jpg",
+        "category": "AI Services"
     },
     {
-        "name": "AI Tool 4",
-        "description": "Natural language processing for enterprise solutions.",
-        "url": "https://aitool4.com",
-        "imageUrl": "https://aitool4.com/image.jpg",
-        "category": "NLP"
+        "name": "Amazon Alexa",
+        "description": "Cloud-based voice service on various devices",
+        "url": "https://developer.amazon.com/alexa",
+        "imageUrl": "https://amazon.com/alexa/image.jpg",
+        "category": "Voice Recognition"
     },
     {
-        "name": "AI Tool 5",
-        "description": "AI-powered cybersecurity defense system.",
-        "url": "https://aitool5.com",
-        "imageUrl": "https://aitool5.com/image.jpg",
-        "category": "Cybersecurity"
+        "name": "Microsoft Azure AI",
+        "description": "Cloud services including ML and cognitive services",
+        "url": "https://azure.microsoft.com/en-us/overview/ai-platform/",
+        "imageUrl": "https://azure.com/ai/image.jpg",
+        "category": "Cloud Computing & AI Services"
     },
     {
-        "name": "AI Tool 6",
-        "description": "Cloud-based AI video editing software.",
-        "url": "https://aitool6.com",
-        "imageUrl": "https://aitool6.com/image.jpg",
-        "category": "Video Editing"
+        "name": "Google Cloud AI",
+        "description": "Comprehensive AI services on Google Cloud",
+        "url": "https://cloud.google.com/ai",
+        "imageUrl": "https://googlecloud.com/ai/image.jpg",
+        "category": "Cloud AI Services"
     },
     {
-        "name": "AI Tool 7",
-        "description": "Intelligent AI chatbot for customer service.",
-        "url": "https://aitool7.com",
-        "imageUrl": "https://aitool7.com/image.jpg",
-        "category": "Chatbot"
+        "name": "Facebook AI",
+        "description": "Advanced AI research and applications",
+        "url": "https://ai.facebook.com/",
+        "imageUrl": "https://facebook.com/ai/image.jpg",
+        "category": "AI Research"
     },
     {
-        "name": "AI Tool 8",
-        "description": "AI-driven predictive maintenance for manufacturing.",
-        "url": "https://aitool8.com",
-        "imageUrl": "https://aitool8.com/image.jpg",
-        "category": "Manufacturing"
+        "name": "NVIDIA AI",
+        "description": "AI and deep learning solutions on GPUs",
+        "url": "https://www.nvidia.com/en-us/deep-learning-ai/",
+        "imageUrl": "https://nvidia.com/ai/image.jpg",
+        "category": "AI Hardware"
     },
     {
-        "name": "AI Tool 9",
-        "description": "Real-time AI translation services.",
-        "url": "https://aitool9.com",
-        "imageUrl": "https://aitool9.com/image.jpg",
-        "category": "Translation"
+        "name": "Baidu AI",
+        "description": "AI services including voice and image recognition",
+        "url": "http://ai.baidu.com/",
+        "imageUrl": "https://baidu.com/ai/image.jpg",
+        "category": "AI Services"
     },
     {
-        "name": "AI Tool 10",
-        "description": "AI platform for personalized health recommendations.",
-        "url": "https://aitool10.com",
-        "imageUrl": "https://aitool10.com/image.jpg",
-        "category": "Healthcare"
+        "name": "Salesforce Einstein",
+        "description": "AI integrated into CRM for smarter decisions",
+        "url": "https://www.salesforce.com/products/einstein/overview/",
+        "imageUrl": "https://salesforce.com/einstein/image.jpg",
+        "category": "Business AI"
+    },
+    {
+        "name": "Hugging Face",
+        "description": "Collaborative platform for machine learning models",
+        "url": "https://huggingface.co/",
+        "imageUrl": "https://huggingface.co/image.jpg",
+        "category": "Machine Learning Collaboration"
+    },
+    {
+        "name": "DeepMind",
+        "description": "Cutting-edge AI research and development",
+        "url": "https://deepmind.com/",
+        "imageUrl": "https://deepmind.com/image.jpg",
+        "category": "AI Research"
+    },
+    {
+        "name": "Rasa",
+        "description": "Open source conversational AI",
+        "url": "https://rasa.com/",
+        "imageUrl": "https://rasa.com/image.jpg",
+        "category": "Conversational AI"
+    },
+    {
+        "name": "GPT-3",
+        "description": "Advanced text generation and understanding AI",
+        "url": "https://openai.com/gpt-3/",
+        "imageUrl": "https://openai.com/gpt-3/image.jpg",
+        "category": "Natural Language Processing"
+    },
+    {
+        "name": "PyTorch",
+        "description": "An open-source machine learning framework",
+        "url": "https://pytorch.org/",
+        "imageUrl": "https://pytorch.org/image.jpg",
+        "category": "Machine Learning Framework"
+    },
+    {
+        "name": "Dialogflow",
+        "description": "Google's conversational AI for chatbots",
+        "url": "https://dialogflow.com/",
+        "imageUrl": "https://dialogflow.com/image.jpg",
+        "category": "Chatbots"
+    },
+    {
+        "name": "PaddlePaddle",
+        "description": "Baidu's open-source deep learning platform",
+        "url": "https://www.paddlepaddle.org.cn/",
+        "imageUrl": "https://paddlepaddle.org.cn/image.jpg",
+        "category": "Deep Learning"
+    },
+    {
+        "name": "Wit.ai",
+        "description": "Natural language processing for developers",
+        "url": "https://wit.ai/",
+        "imageUrl": "https://wit.ai/image.jpg",
+        "category": "Natural Language Processing"
+    },
+    {
+        "name": "Keras",
+        "description": "A high-level neural networks API",
+        "url": "https://keras.io/",
+        "imageUrl": "https://keras.io/image.jpg",
+        "category": "Neural Networks"
     }
 ]

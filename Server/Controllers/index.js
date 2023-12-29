@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessUpdateUserInfoByIdPage = exports.DisplayUpdateUserInfoByIdPage = exports.DisplayUsersListPage = exports.DisplayDashboardPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
+exports.ProcessLogoutPage = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLoginPage = exports.DisplayLoginPage = exports.ProcessUpdateUserInfoByIdPage = exports.DisplayUpdateUserInfoByIdPage = exports.DisplayUsersListPage = exports.DisplayDashboardPage = exports.ProcessBlogPostPage = exports.DisplayArticleById = exports.DisplayBlogPage = exports.DisplayNewsPage = exports.DisplayAILinkDetails = exports.DisplayAILinksPage = exports.DisplayToolsPage = void 0;
 const passport_1 = __importDefault(require("passport"));
 // create instances of the Models
 const user_1 = __importDefault(require("../Models/user"));
@@ -46,6 +46,31 @@ function DisplayAILinksPage(req, res, next) {
     });
 }
 exports.DisplayAILinksPage = DisplayAILinksPage;
+// Display AI Link Details Page
+function DisplayAILinkDetails(req, res, next) {
+    let aiPageId = req.params.id;
+    ailink_1.default.findById(aiPageId)
+        .then((aiPageToDisplay) => {
+        if (!aiPageToDisplay) {
+            res.status(404).send('AI Link page not found');
+            return;
+        }
+        // Generate cover image URL
+        if (aiPageToDisplay.imageUrl && aiPageToDisplay.imageUrl.length > 0) {
+            aiPageToDisplay.imageUrl = '/AILinksImages/' + aiPageToDisplay.imageUrl;
+        }
+        res.render('index', {
+            title: aiPageToDisplay.name,
+            page: 'aiLinkPage',
+            ailink: aiPageToDisplay
+        });
+    })
+        .catch((err) => {
+        console.error('Error fetching AI Link details: ', err);
+        next(err);
+    });
+}
+exports.DisplayAILinkDetails = DisplayAILinkDetails;
 // Display News Page
 function DisplayNewsPage(req, res, next) {
     res.render('index', { title: 'News', page: 'news', displayName: (0, Util_1.UserDisplayName)(req) });

@@ -54,6 +54,31 @@ export function DisplayAILinksPage(req: Request, res: Response, next: NextFuncti
   });
 }
 
+// Display AI Link Details Page
+export function DisplayAILinkDetails(req: Request, res: Response, next: NextFunction) {
+  let aiPageId = req.params.id;
+  AILink.findById(aiPageId)
+  .then((aiPageToDisplay) => {
+    if (!aiPageToDisplay) {
+      res.status(404).send('AI Link page not found');
+      return;
+    }
+    // Generate cover image URL
+    if (aiPageToDisplay.imageUrl && aiPageToDisplay.imageUrl.length > 0) {
+      aiPageToDisplay.imageUrl = '/AILinksImages/' + aiPageToDisplay.imageUrl;
+    }
+    res.render('index', {
+        title: aiPageToDisplay.name,
+        page: 'aiLinkPage',
+        ailink: aiPageToDisplay
+    });
+  })
+  .catch((err) => {
+      console.error('Error fetching AI Link details: ', err);
+      next(err);
+  });
+}
+
 
 // Display News Page
 export function DisplayNewsPage(req: Request, res: Response, next: NextFunction): void 
