@@ -42,7 +42,7 @@ export function DisplayAILinksPage(req: Request, res: Response, next: NextFuncti
   }, {});
 
   res.render('index', {
-      title: 'AI Links',
+      title: 'AI Tools',
       page: 'ailinks',
       displayName: UserDisplayName(req),
       categorizedLinks: categorizedLinks // pass the categorized links to the view
@@ -55,6 +55,7 @@ export function DisplayAILinksPage(req: Request, res: Response, next: NextFuncti
 }
 
 // Display AI Link Details Page
+/*
 export function DisplayAILinkDetails(req: Request, res: Response, next: NextFunction) {
   let aiPageId = req.params.id;
   AILink.findById(aiPageId)
@@ -78,7 +79,7 @@ export function DisplayAILinkDetails(req: Request, res: Response, next: NextFunc
       next(err);
   });
 }
-
+*/
 
 // Display News Page
 export function DisplayNewsPage(req: Request, res: Response, next: NextFunction): void 

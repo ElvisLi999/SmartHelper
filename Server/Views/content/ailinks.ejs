@@ -1,6 +1,6 @@
 <div class="container py-4 container-background">
 
-<!-- Search Part -->
+<!-- Search Part 
 <div class="row justify-content-center">
   <div class="col-md-10">
     <form action="/search" method="get" id="searchForm" class="input-group">
@@ -14,6 +14,7 @@
     </form>
   </div>
 </div>
+-->
 
 <!-- Popular AI Links -->
 <div class="p-5 mb-4 container-background rounded-3">
@@ -28,7 +29,16 @@
       { name: 'ChatGPT', description: 'A chatbot based on large language models.', url: 'https://chat.openai.com', imageUrl: 'ChatGPT.png' },
       { name: 'Microsoft Copilot', description: 'An AI assistant developed by Microsoft.', url: 'https://copilot.microsoft.com', imageUrl: 'MicrosoftCopilot.png' },
       { name: 'Grammarly', description: 'A digital writing tool using AI.', url: 'https://www.grammarly.com/', imageUrl: 'Grammarly.png' },
-      { name: 'Midjourney', description: 'A creative and imaginative tool powered by AI. ', url: 'https://www.midjourney.com', imageUrl: 'Midjourney.png' }
+      { name: 'Midjourney', description: 'A creative and imaginative tool powered by AI. ', url: 'https://www.midjourney.com', imageUrl: 'Midjourney.png' },
+      { name: 'JasperAI', description: 'A business copy generator. ', url: 'https://www.jasper.ai', imageUrl: 'JasperAi.png' },
+      { name: 'QuillBot', description: 'A AI-powered Paraphasing tool. ', url: 'https://quillbot.com', imageUrl: 'QuillBot.png' },
+      { name: 'Bard', description: "Google's conversational AI tool. ", url: 'https://bard.google.com', imageUrl: 'Bard.png' },
+      { name: 'Synthesia', description: "An AI-driven platform for creating realistic synthetic videos. ", url: 'https://www.synthesia.io', imageUrl: 'Synthesia.png' },
+      { name: 'Resemble', description: "An AI platform crafting synthetic, realistic voices for content. ", url: 'https://www.resemble.ai', imageUrl: 'Resemble.png' },
+      { name: 'Removebg', description: "A customizable AI tool for generative art applications. ", url: 'https://www.remove.bg', imageUrl: 'Removebg.png' },
+      { name: 'Stability', description: "A tool to remove image backgrounds using AI. ", url: 'https://stability.ai', imageUrl: 'Stability.png' },
+      { name: 'GitHub Copilot', description: "A famous AI developer tool. ", url: 'https://github.com/features/copilot', imageUrl: 'GitHubCopilot.png' },
+      
     ]; %>
 
     <% hotTools.forEach(link => { %>
@@ -56,7 +66,7 @@
   </div>
 </div>
 
-<!-- AI Links Section -->
+<!-- AI Links Section 
 <% if(categorizedLinks && Object.keys(categorizedLinks).length > 0) { %>
   <% for(let category in categorizedLinks) { %>
     <h2 class="mt-4 text-center"><%= category %></h2>
@@ -81,6 +91,7 @@
 <% } else { %>
   <p>No AI Links found.</p>
 <% } %>
+-->
   </div>
 </div>
 </div>
