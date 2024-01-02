@@ -6,6 +6,17 @@
    Filename: app.css
 */
 
+/* app.css */
+.light-theme {
+   background-color: #f8f9fa; /* light gray background */
+   color: #212529; /* dark text */
+ }
+ 
+ .dark-theme {
+   background-color: #343a40; /* dark gray background */
+   color: #f8f9fa; /* light text */
+ }
+ 
 
 /* Custom css */
 
@@ -15,42 +26,39 @@
  }
 
  .card-hover2:hover {
-   background-color: #005B4F; /* 您希望的悬停时的背景颜色 */
+   background-color: #005B4F; /* color when mouse stop on the card */
  }
 
 
  /* Custom css for the article */
  .article-content p {
-   /* 段落样式 */
    margin-bottom: 1rem;
    line-height: 1.6;
    text-align: justify;
  }
  
  .article-content h2, .article-content h3 {
-   /* 标题样式 */
    margin-top: 2rem;
    color: #333;
  }
  
  .article-content ul, .article-content ol {
-   /* 列表样式 */
+   /* list */
    margin-left: 2rem;
  }
  
  .article-content li {
-   /* 列表项样式 */
+   /* list option */
    margin-bottom: 0.5rem;
  }
  
 .article-content img {
-   /* 图片样式 */
    max-width: 100%;
    margin-bottom: 1rem;
 }
 
 .article-content blockquote {
-   /* 引用样式 */
+   /* quote */
    margin: 1rem 0;
    padding: 0.5rem 1rem;
    border-left: 0.25rem solid #dfe2e5;
@@ -65,16 +73,16 @@
  }
  
  .article-tags {
-   /* 标签容器样式 */
+   /* tags */
    margin-top: 1rem;
  }
  
  .article-category {
-   /* 分类容器样式 */
+   /* category */
    margin-top: 1rem;
  }
  
- /* 可以添加更多样式来自定义这些部分的显示效果 */
+
  
  
 

@@ -48,15 +48,28 @@
               href="/news"><i class="fas fa-rss fa-xl fa-beat-fade" style="color: #1E3050"></i><b> News </b></a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Type your keywords here..." aria-label="Search">
-            <select name="searchType" class="form-select" style="max-width: 150px;">
-              <option value="internal">Internal</option>
-              <option value="google">Google</option>
-              <option value="bing">Bing</option>
-            </select>
-          <button class="btn btn-secondary" type="submit" >Search</button>
-      </form>
+
+          <!-- search setting -->
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Type your keywords here..." aria-label="Search">
+              <select name="searchType" class="form-select" style="max-width: 150px;">
+                <option value="internal">Internal</option>
+                <option value="google">Google</option>
+                <option value="bing">Bing</option>
+              </select>
+            <button class="btn btn-secondary" type="submit" >Search</button>
+        </form>
+        <!-- theme setting -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Switch Theme
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="themeDropdown">
+            <li><a class="dropdown-item" href="#" onclick="switchTheme('light')">Light</a></li>
+            <li><a class="dropdown-item" href="#" onclick="switchTheme('dark')">Dark</a></li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </nav>
