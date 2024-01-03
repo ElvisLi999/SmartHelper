@@ -5,9 +5,16 @@ function switchTheme() {
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-bs-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    // 获取切换主题的按钮
+    // update the nav icons color
+    const navIcons = document.querySelectorAll('.nav-icon');
+    navIcons.forEach(icon => {
+        if (icon instanceof HTMLElement) {
+            icon.style.color = newTheme === 'dark' ? '#f8f9fa' : '#1E3050';
+        }
+    });
+    // get the theme toggle button 
     const themeToggleButton = document.getElementById('themeToggle');
-    // 根据主题设置按钮的背景色
+    // set the theme toggle button class based on the new theme
     if (newTheme === 'dark') {
         themeToggleButton.classList.remove('theme-toggle-light');
         themeToggleButton.classList.add('theme-toggle-dark');
@@ -16,7 +23,7 @@ function switchTheme() {
         themeToggleButton.classList.remove('theme-toggle-dark');
         themeToggleButton.classList.add('theme-toggle-light');
     }
-    // 切换图标
+    // switch the theme icon
     document.getElementById('iconLight').style.display = newTheme === 'dark' ? 'none' : 'block';
     document.getElementById('iconDark').style.display = newTheme === 'light' ? 'none' : 'block';
 }

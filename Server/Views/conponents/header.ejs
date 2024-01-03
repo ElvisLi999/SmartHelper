@@ -18,7 +18,7 @@
             <% } else { %>
               <a class="nav-link"
             <% } %>
-              href="/"><i class="fas fa-xl fa-calculator" style="color: #1E3050"></i><b> Tools </b></a>
+              href="/"><i class="nav-icon fas fa-xl fa-calculator" ></i><b> Tools </b></a>
           </li>
 
           <li class="nav-item">
@@ -27,7 +27,7 @@
             <% } else { %>
               <a class="nav-link"
             <% } %>
-              href="/ailinks"><i class="fas fa-xl fa-robot" style="color: #1E3050"></i><b> AI Tools </b></a>
+              href="/ailinks"><i class="nav-icon fas fa-xl fa-robot" ></i><b> AI Tools </b></a>
           </li>
 
           <li class="nav-item">
@@ -36,7 +36,7 @@
             <% } else { %>
               <a class="nav-link"
             <% } %>
-              href="/blog"><i class="fas fa-xl fa-blog" style="color: #1E3050"></i><b> Blog </b></a>
+              href="/blog"><i class="nav-icon fas fa-xl fa-blog" ></i><b> Blog </b></a>
           </li>
 
           <li class="nav-item">
@@ -45,28 +45,26 @@
             <% } else { %>
               <a class="nav-link"
             <% } %>
-              href="/news"><i class="fas fa-rss fa-xl fa-beat-fade" style="color: #1E3050"></i><b> News </b></a>
+              href="/news"><i class="nav-icon fas fa-rss fa-xl fa-beat-fade" ></i><b> News </b></a>
           </li>
         </ul>
-
           <!-- search setting -->
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Type your keywords here..." aria-label="Search">
+            <input class="form-control ms-5" type="search" placeholder="Type your keywords here..." aria-label="Search">
               <select name="searchType" class="form-select" style="max-width: 150px;">
                 <option value="internal">Internal</option>
                 <option value="google">Google</option>
                 <option value="bing">Bing</option>
               </select>
-            <button id="btn btn-light" type="submit" >Search</button>
+            <button id="btn btn-light ms-5" type="submit" >Search</button>
         </form>
         <!-- theme setting -->
         <div >
-          <button id="themeToggle" class="btn" >
+          <button id="themeToggle" class="btn ms-5" >
             <i id="iconLight" class="bi bi-sun-fill" ></i>
             <i id="iconDark" class="bi bi-moon-fill" style="display: none;"></i>
           </button>
         </div>
-
       </div>
     </div>
   </nav>
