@@ -17,6 +17,22 @@
    color: #f8f9fa; /* light text */
  }
  
+ #themeToggle,
+ #themeToggle:focus {
+   border: none !important;
+   outline: none !important;
+   box-shadow: none !important;
+ }
+ 
+ .theme-toggle-light {
+  background-color: #f8f9fa; 
+  color: #212529;
+}
+
+.theme-toggle-dark {
+  background-color: #343a40; 
+  color: #f8f9fa; 
+}
 
 /* Custom css */
 

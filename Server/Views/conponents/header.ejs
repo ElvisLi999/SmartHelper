@@ -57,17 +57,14 @@
                 <option value="google">Google</option>
                 <option value="bing">Bing</option>
               </select>
-            <button class="btn btn-secondary" type="submit" >Search</button>
+            <button id="btn btn-light" type="submit" >Search</button>
         </form>
         <!-- theme setting -->
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            Switch Theme
+        <div >
+          <button id="themeToggle" class="btn" >
+            <i id="iconLight" class="bi bi-sun-fill" ></i>
+            <i id="iconDark" class="bi bi-moon-fill" style="display: none;"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="themeDropdown">
-            <li><a class="dropdown-item" href="#" onclick="switchTheme('light')">Light</a></li>
-            <li><a class="dropdown-item" href="#" onclick="switchTheme('dark')">Dark</a></li>
-          </ul>
         </div>
 
       </div>
