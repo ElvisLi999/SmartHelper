@@ -7,6 +7,8 @@
 */
 
 /* app.css */
+
+/* Global css for theme switching */
 .light-theme {
    background-color: #f8f9fa; /* light gray background */
    color: #212529; /* dark text */
@@ -16,7 +18,7 @@
    background-color: #343a40; /* dark gray background */
    color: #f8f9fa; /* light text */
  }
- 
+ /* css for theme switching button */
  #themeToggle,
  #themeToggle:focus {
    border: none !important;

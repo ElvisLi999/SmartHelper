@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <!-- LOGO setting -->
       <a class="navbar-brand mx-auto" href="/">
-        <img class="navbar-brand" src="/Assets/images/logo.png" href="/" alt="Smart Helper">
+        <img id="siteLogo" class="navbar-brand" src="/Assets/images/logo_light.png" href="/" alt="Smart Helper">
       </a>
       <!-- navbar setting -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,12 +51,12 @@
           <!-- search setting -->
           <form class="d-flex" role="search">
             <input class="form-control ms-5" type="search" placeholder="Type your keywords here..." aria-label="Search">
-              <select name="searchType" class="form-select" style="max-width: 150px;">
+              <select name="searchType" class="form-select" style="max-width: 90px;">
                 <option value="internal">Internal</option>
                 <option value="google">Google</option>
                 <option value="bing">Bing</option>
               </select>
-            <button id="btn btn-light ms-5" type="submit" >Search</button>
+            <button id="searchToggle" class="btn ms-3" type="submit" ><i class="bi bi-search"></i></button>
         </form>
         <!-- theme setting -->
         <div >

@@ -1,10 +1,14 @@
 "use strict";
+// Objective: Handle the theme switcher
 function switchTheme() {
     const root = document.documentElement;
+    const logo = document.getElementById('siteLogo');
     const currentTheme = root.getAttribute('data-bs-theme') || 'light';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-bs-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    // switch the logo based on the theme
+    logo.src = newTheme === 'dark' ? '/Assets/images/logo_dark.png' : '/Assets/images/logo_light.png';
     // update the nav icons color
     const navIcons = document.querySelectorAll('.nav-icon');
     navIcons.forEach(icon => {
@@ -24,16 +28,19 @@ function switchTheme() {
         themeToggleButton.classList.add('theme-toggle-light');
     }
     // switch the theme icon
-    document.getElementById('iconLight').style.display = newTheme === 'dark' ? 'none' : 'block';
-    document.getElementById('iconDark').style.display = newTheme === 'light' ? 'none' : 'block';
+    document.getElementById('iconLight').style.display = newTheme === 'dark' ? 'block' : 'none';
+    document.getElementById('iconDark').style.display = newTheme === 'light' ? 'block' : 'none';
 }
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     const root = document.documentElement; // Declare the 'root' variable
+    const logo = document.getElementById('siteLogo');
     root.setAttribute('data-bs-theme', savedTheme);
-    // 设置图标状态
-    document.getElementById('iconLight').style.display = savedTheme === 'dark' ? 'none' : 'block';
-    document.getElementById('iconDark').style.display = savedTheme === 'light' ? 'none' : 'block';
+    // switch the logo based on the theme
+    logo.src = savedTheme === 'dark' ? '/Assets/images/logo_dark.png' : '/Assets/images/logo_light.png';
+    // set the theme toggle button class based on the saved theme
+    document.getElementById('iconLight').style.display = savedTheme === 'dark' ? 'block' : 'none';
+    document.getElementById('iconDark').style.display = savedTheme === 'light' ? 'block' : 'none';
 });
 document.getElementById('themeToggle').addEventListener('click', switchTheme);
 //# sourceMappingURL=app.js.map
