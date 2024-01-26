@@ -16,16 +16,26 @@ function switchTheme() {
             icon.style.color = newTheme === 'dark' ? '#f8f9fa' : '#1E3050';
         }
     });
-    // get the theme toggle button 
+    // get the theme toggle button and card elements
     const themeToggleButton = document.getElementById('themeToggle');
-    // set the theme toggle button class based on the new theme
+    const aiCards = document.querySelectorAll('.aiCard'); // get all the cards by using class selector
+    // set the theme toggle button class and card class based on the new theme
     if (newTheme === 'dark') {
         themeToggleButton.classList.remove('theme-toggle-light');
         themeToggleButton.classList.add('theme-toggle-dark');
+        document.getElementById('iconLight').style.display = 'none';
+        aiCards.forEach(card => {
+            card.classList.remove('card-hover-light');
+            card.classList.add('card-hover-dark');
+        });
     }
     else {
         themeToggleButton.classList.remove('theme-toggle-dark');
         themeToggleButton.classList.add('theme-toggle-light');
+        aiCards.forEach(card => {
+            card.classList.remove('card-hover-dark');
+            card.classList.add('card-hover-light');
+        });
     }
     // switch the theme icon
     document.getElementById('iconLight').style.display = newTheme === 'dark' ? 'block' : 'none';

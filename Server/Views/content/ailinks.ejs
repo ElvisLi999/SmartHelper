@@ -24,7 +24,7 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Hot AI Tools</h2>
   <div class="row">
-    <!-- 以下每个卡片的样式和之前定义的卡片保持一致 -->
+    <!--The cards -->
     <% const hotTools = [
       { name: 'ChatGPT', description: 'A chatbot based on large language models.', url: 'https://chat.openai.com', imageUrl: 'ChatGPT.png' },
       { name: 'Microsoft Copilot', description: 'An AI assistant developed by Microsoft.', url: 'https://copilot.microsoft.com', imageUrl: 'MicrosoftCopilot.png' },
@@ -44,7 +44,7 @@
     <% hotTools.forEach(link => { %>
      <div class="mb-4 mx-0.5" style="max-width: 300px; max-height: 120px">
       <a href="<%= link.url %>" target="_blank" class=" text-decoration-none">
-          <div class="card h-100 card-fixed-height card-hover" >
+          <div class="aiCard card h-100 card-fixed-height card-hover-light" >
               <div class="row g-0" >
                 <div class="col-md-3 d-flex align-items-center justify-content-center">
                   <% if(link.imageUrl) { %>

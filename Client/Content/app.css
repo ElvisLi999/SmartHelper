@@ -39,12 +39,13 @@
 /* Custom css */
 
 /* Custom css for the card */
-.card-hover:hover {
+/* color when mouse stop on the card */
+.card-hover-light:hover {
    background-color: #d9f4f0
  }
 
- .card-hover2:hover {
-   background-color: #005B4F; /* color when mouse stop on the card */
+ .card-hover-dark:hover {
+   background-color: #141515; 
  }
 
 
@@ -100,6 +101,16 @@
    margin-top: 1rem;
  }
  
+
+ /* make the footer in the middle */
+#footer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  }
+
 
  
  
