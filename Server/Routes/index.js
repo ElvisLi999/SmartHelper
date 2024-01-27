@@ -11,7 +11,7 @@ const Util_1 = require("../Util");
 /* Get Page Controllers */
 const index_1 = require("../Controllers/index");
 /* GET tools page. */
-router.get('/', index_1.DisplayToolsPage);
+router.get('/', index_1.DisplayAILinksPage);
 /* GET tools page. */
 router.get('/tools', index_1.DisplayToolsPage);
 /* GET AI Toolkit page. */

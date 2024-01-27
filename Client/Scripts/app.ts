@@ -1,69 +1,57 @@
-// Objective: Handle the theme switcher
-function switchTheme(): void {
-  const root = document.documentElement;
-  const logo = document.getElementById('siteLogo') as HTMLImageElement;
-  const currentTheme = root.getAttribute('data-bs-theme') || 'light';
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  root.setAttribute('data-bs-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
 
-  // switch the logo based on the theme
-  logo.src = newTheme === 'dark' ? '/Assets/images/logo_dark.png' : '/Assets/images/logo_light.png';
+(function() {
+  // Function to update the theme-related elements on the page
+  function updateThemeElements(theme: string) {
+    const root = document.documentElement;
+    const logo = document.getElementById('siteLogo');
+    const themeToggleButton = document.getElementById('themeToggle');
+    const aiCards = document.querySelectorAll('.aiCard');
 
-  // update the nav icons color
-  const navIcons = document.querySelectorAll('.nav-icon');
-  navIcons.forEach(icon => {
-    if (icon instanceof HTMLElement) {
-      icon.style.color = newTheme === 'dark' ? '#f8f9fa' : '#1E3050';
+    // Set the theme attribute and store it in localStorage
+    root.setAttribute('data-bs-theme', theme);
+    // Update the logo based on the theme
+    if (logo) {
+      (logo as HTMLImageElement).src = theme === 'dark' ? '/Assets/images/logo_dark.png' : '/Assets/images/logo_light.png';
     }
+
+    // Update the theme toggle button and card classes
+    if (themeToggleButton) {
+      themeToggleButton.classList.toggle('theme-toggle-dark', theme === 'dark');
+      themeToggleButton.classList.toggle('theme-toggle-light', theme === 'light');
+    }
+
+    // Update each card class based on the theme
+    aiCards.forEach(card => {
+      card.classList.toggle('card-hover-dark', theme === 'dark');
+      card.classList.toggle('card-hover-light', theme === 'light');
+    });
+
+    // Update the theme icon visibility
+    const iconLight = document.getElementById('iconLight');
+    const iconDark = document.getElementById('iconDark');
+    if (iconLight && iconDark) {
+      iconLight.style.display = theme === 'dark' ? 'block' : 'none';
+      iconDark.style.display = theme === 'light' ? 'block' : 'none';
+    }
+  }
+
+  // Function to switch the theme between 'light' and 'dark'
+  function switchTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-bs-theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    updateThemeElements(newTheme);
+  }
+
+  // Event listener for DOMContentLoaded to apply the saved theme
+  document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve the saved theme from localStorage or default to 'light'
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    updateThemeElements(savedTheme); // Apply the saved theme
   });
 
-   // get the theme toggle button and card elements
-   const themeToggleButton = document.getElementById('themeToggle');
-   const aiCards = document.querySelectorAll('.aiCard'); // get all the cards by using class selector
-
-   // set the theme toggle button class and card class based on the new theme
-   if (newTheme === 'dark') {
-     themeToggleButton.classList.remove('theme-toggle-light');
-     themeToggleButton.classList.add('theme-toggle-dark');
-     document.getElementById('iconLight').style.display = 'none';
-     
-     aiCards.forEach(card => {
-      card.classList.remove('card-hover-light');
-      card.classList.add('card-hover-dark');
-     });
-   } else {
-     themeToggleButton.classList.remove('theme-toggle-dark');
-     themeToggleButton.classList.add('theme-toggle-light');
-
-     aiCards.forEach(card => {
-      card.classList.remove('card-hover-dark');
-      card.classList.add('card-hover-light');
-     });
-   }
-
-  // switch the theme icon
-  document.getElementById('iconLight').style.display = newTheme === 'dark' ? 'block' : 'none';
-  document.getElementById('iconDark').style.display = newTheme === 'light' ? 'block' : 'none';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  const root = document.documentElement; // Declare the 'root' variable
-  const logo = document.getElementById('siteLogo') as HTMLImageElement;
-  root.setAttribute('data-bs-theme', savedTheme);
-
-  // switch the logo based on the theme
-  logo.src = savedTheme === 'dark' ? '/Assets/images/logo_dark.png' : '/Assets/images/logo_light.png';
-  // set the theme toggle button class based on the saved theme
-  document.getElementById('iconLight').style.display = savedTheme === 'dark' ? 'block' : 'none';
-  document.getElementById('iconDark').style.display = savedTheme === 'light' ? 'block' : 'none';
-});
-
-document.getElementById('themeToggle').addEventListener('click', switchTheme);
-
-
-
-
-
-  
+  // Add click event listener to the theme toggle button
+  const themeToggleButton = document.getElementById('themeToggle');
+  if (themeToggleButton) {
+    themeToggleButton.addEventListener('click', switchTheme);
+  }
+})();

@@ -12,7 +12,7 @@ import { DisplayToolsPage, DisplayAILinksPage, DisplayNewsPage, DisplayBlogPage,
 
 
 /* GET tools page. */
-router.get('/', DisplayToolsPage);
+router.get('/', DisplayAILinksPage);
 
 /* GET tools page. */
 router.get('/tools', DisplayToolsPage);

@@ -8,6 +8,19 @@
 
 /* app.css */
 
+/* Global font */
+body {
+  font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif !important; 
+}
+
+/* Set navbar as a flex container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 /* Global css for theme switching */
 .light-theme {
    background-color: #f8f9fa; /* light gray background */
@@ -104,11 +117,13 @@
 
  /* make the footer in the middle */
 #footer{
+  font-family:  "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif; 
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   text-align: center;
+  font-size: small;
   }
 
 
